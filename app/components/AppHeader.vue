@@ -18,20 +18,15 @@ const { header } = useAppConfig()
     />
 
     <template
-      v-if="header?.logo?.dark || header?.logo?.light || header?.title"
+      v-if="header?.logo?.dark || header?.logo?.light"
       #title
     >
       <UColorModeImage
-        v-if="header?.logo?.dark || header?.logo?.light"
         :light="header?.logo?.light!"
         :dark="header?.logo?.dark!"
         :alt="header?.logo?.alt"
         class="h-6 w-auto shrink-0"
       />
-
-      <span v-else-if="header?.title">
-        {{ header.title }}
-      </span>
     </template>
 
     <template
