@@ -54,7 +54,7 @@ function WalletConnect() {
 
 ## Advanced: Custom Wallet Provider
 
-Based on zuno-mini's `WalletProvider.tsx`, here's a simplified pattern:
+Based on production implementation patterns, here's a simplified `WalletProvider` pattern:
 
 ### 1. Define Wallet State
 
@@ -337,6 +337,7 @@ useEffect(() => {
 
 ## See Also
 
-- [Zuno Mini Reference](/sdk/integration-guides/zuno-mini-reference) - Full provider implementation
+- [Integration Tutorial](/sdk/integration-guides/zuno-mini-tutorial) - Complete wallet integration walkthrough
+- [Integration Reference](/sdk/integration-guides/zuno-mini-reference) - Full provider implementation
 - [Next.js Setup](/sdk/integration-guides/nextjs-setup) - Project configuration
 - [Error Handling](/sdk/integration-guides/error-handling) - Error management patterns

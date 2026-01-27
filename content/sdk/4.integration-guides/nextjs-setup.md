@@ -305,7 +305,8 @@ Visit `http://localhost:3000` to see your marketplace in action.
 
 After completing this guide:
 
-- [Zuno Mini Reference](/sdk/integration-guides/zuno-mini-reference) - Real implementation patterns
+- [Integration Tutorial](/sdk/integration-guides/zuno-mini-tutorial) - Complete step-by-step guide
+- [Integration Reference](/sdk/integration-guides/zuno-mini-reference) - Real implementation patterns
 - [Wallet Integration](/sdk/integration-guides/wallet-integration) - Advanced wallet patterns
 - [Error Handling](/sdk/integration-guides/error-handling) - Robust error management
 - [Exchange Module](/sdk/core-modules/exchange) - Building marketplace features
