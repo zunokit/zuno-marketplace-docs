@@ -10,7 +10,7 @@ relatedTopics:
   - "configuration"
 ---
 
-Get started with the Zuno Marketplace SDK v2.1.2 for building NFT marketplace applications with type-safe, React-first integration.
+Get started with the Zuno SDK v2.1.2 for building NFT marketplace applications with type-safe, React-first integration.
 
 ## Prerequisites
 

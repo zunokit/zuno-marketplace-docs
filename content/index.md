@@ -1,12 +1,12 @@
 ---
 seo:
-  title: Zuno Marketplace SDK Documentation
-  description: Comprehensive documentation for Zuno Marketplace SDK v2.1.2. Build NFT marketplace applications with TypeScript, React hooks, and Web3 integration.
+  title: Zuno SDK Documentation
+  description: Comprehensive documentation for Zuno SDK v2.1.2. Build NFT marketplace applications with TypeScript, React hooks, and Web3 integration.
 ---
 
 ::u-page-hero
 #title
-Zuno Marketplace SDK
+Zuno SDK
 
 #description
 All-in-One NFT Marketplace SDK with Wagmi & React Query built-in. Build enterprise-grade NFT marketplace applications with TypeScript.

@@ -6,7 +6,7 @@ complexity: "beginner"
 category: "integration"
 ---
 
-Complete guide for setting up a new Next.js 15 project with Zuno Marketplace SDK v2.1.2, featuring App Router, SSR support, and proper provider configuration.
+Complete guide for setting up a new Next.js 15 project with Zuno SDK v2.1.2, featuring App Router, SSR support, and proper provider configuration.
 
 ## Prerequisites
 
@@ -180,7 +180,7 @@ import "./globals.css";
 import AppProvider from "./app-provider";
 
 export const metadata: Metadata = {
-  title: "Zuno Marketplace",
+  title: "Zuno SDK",
   description: "NFT marketplace powered by Zuno SDK",
 };
 
@@ -232,7 +232,7 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col items-center justify-center p-8">
       <div className="max-w-md w-full space-y-6">
         <h1 className="text-3xl font-bold text-center">
-          Zuno Marketplace SDK
+          Zuno SDK
         </h1>
 
         {!isConnected ? (

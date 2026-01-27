@@ -11,7 +11,7 @@ relatedTopics:
   - "wallet-connection"
 ---
 
-Get your NFT marketplace up and running in minutes with the Zuno Marketplace SDK v2.1.2.
+Get your NFT marketplace up and running in minutes with the Zuno SDK v2.1.2.
 
 ## React with Next.js Setup
 

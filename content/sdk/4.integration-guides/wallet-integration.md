@@ -6,7 +6,7 @@ complexity: "beginner"
 category: "integration"
 ---
 
-Comprehensive guide for integrating Web3 wallet connections with Zuno Marketplace SDK v2.1.2, covering MetaMask, WalletConnect, and auto-reconnect patterns.
+Comprehensive guide for integrating Web3 wallet connections with Zuno SDK v2.1.2, covering MetaMask, WalletConnect, and auto-reconnect patterns.
 
 ## Overview
 

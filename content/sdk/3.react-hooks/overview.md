@@ -12,7 +12,7 @@ relatedTopics:
   - "auction"
 ---
 
-The Zuno Marketplace SDK v2.1.2 provides 21+ React hooks for building marketplace applications with Wagmi and TanStack Query integration.
+The Zuno SDK v2.1.2 provides 21+ React hooks for building marketplace applications with Wagmi and TanStack Query integration.
 
 ## What's New in v2.1.2
 

@@ -1,5 +1,5 @@
 ---
-title: "Zuno Marketplace SDK"
+title: "Zuno SDK"
 package: "sdk"
 version: "2.1.2"
 lastUpdated: "2026-01-27"

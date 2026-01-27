@@ -6,7 +6,7 @@ complexity: "intermediate"
 category: "api"
 ---
 
-Complete API reference for Zuno Marketplace SDK v2.1.2. All methods, hooks, and types with signatures, parameters, return values, and examples.
+Complete API reference for Zuno SDK v2.1.2. All methods, hooks, and types with signatures, parameters, return values, and examples.
 
 ## APIs
 
