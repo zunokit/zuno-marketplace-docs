@@ -67,4 +67,5 @@ Advanced SDK features for power users: batch operations, ERC1155 support, DevToo
 ## See Also
 
 - [API Reference](/sdk/api-reference/exchange-api) - Method signatures
-- [Integration Guides](/sdk/integration-guides/zuno-mini-reference) - Real examples
+- [Integration Tutorial](/sdk/integration-guides/zuno-mini-tutorial) - Complete integration walkthrough
+- [Integration Reference](/sdk/integration-guides/zuno-mini-reference) - Real implementation examples

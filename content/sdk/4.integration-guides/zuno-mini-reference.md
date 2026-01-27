@@ -1,16 +1,16 @@
 ---
-title: "Zuno Mini Reference"
+title: "Integration Reference"
 package: "sdk"
 scope: "guide"
 complexity: "intermediate"
 category: "integration"
 ---
 
-Real implementation patterns from [zuno-marketplace-mini](https://github.com/ZunoKit/zuno-marketplace-mini), a production NFT marketplace built with Next.js 15 and Zuno SDK v2.1.2.
+Real implementation patterns from production NFT marketplace applications built with Next.js 15 and Zuno SDK v2.1.2.
 
 ## Overview
 
-zuno-mini demonstrates:
+This reference demonstrates production-ready patterns:
 - **Clean Architecture** - Separation of providers, services, and utilities
 - **State Management** - useReducer for wallet state, Zustand for global state
 - **Error Handling** - Centralized error handling with user-friendly messages
