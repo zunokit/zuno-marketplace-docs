@@ -12,10 +12,10 @@ export default defineAppConfig({
     }
   },
   seo: {
-    siteName: 'Zuno Marketplace Documentation'
+    siteName: 'Zuno SDK Documentation'
   },
   header: {
-    title: 'Zuno Marketplace',
+    title: 'Zuno SDK',
     to: '/',
     logo: {
       alt: 'Zuno Marketplace',

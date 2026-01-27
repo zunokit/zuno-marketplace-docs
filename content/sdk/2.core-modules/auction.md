@@ -1,7 +1,7 @@
 ---
 title: "Auction Module"
 package: "sdk"
-lastUpdated: "2024-11-24"
+lastUpdated: "2026-01-27"
 scope: "api-reference"
 complexity: "intermediate"
 category: "core-modules"
@@ -10,15 +10,16 @@ relatedTopics:
   - "collection"
 ---
 
-The Auction module implements English auction functionality for NFT sales with competitive bidding.
+The Auction module implements English auction functionality for NFT sales with competitive bidding and batch operations.
 
 ## Overview
 
 The Auction module provides:
 
 - **Create English auctions** - Time-bound auctions with starting bids
+- **Batch create auctions** - Create up to 20 auctions in one transaction (v2.1.2)
 - **Place bids** - Submit competitive bids on active auctions
-- **Cancel auctions** - Remove auctions before completion
+- **Batch cancel auctions** - Cancel multiple auctions at once (v2.1.2)
 - **Query auctions** - Get active auctions and auction history
 - **Settle auctions** - Finalize auction and transfer NFT to winner
 
@@ -55,6 +56,41 @@ const { auctionId, tx } = await sdk.auction.createEnglishAuction({
 }
 ```
 
+### Batch Create English Auctions (v2.1.2)
+
+Create multiple auctions in a single transaction (max 20 auctions).
+
+```typescript
+const { auctionIds, tx } = await sdk.auction.batchCreateEnglishAuction({
+  collectionAddress: '0x...',
+  tokenIds: ['1', '2', '3'],     // Up to 20 token IDs
+  startingBid: '1.0',             // Same starting bid for all
+  duration: 86400 * 7,
+});
+```
+
+**Parameters:**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `collectionAddress` | `string` | Yes | NFT contract address |
+| `tokenIds` | `string[]` | Yes | Token IDs to auction (max 20) |
+| `startingBid` | `string` | Yes | Minimum bid in ETH (same for all) |
+| `duration` | `number` | Yes | Auction duration in seconds |
+
+**Returns:**
+
+```typescript
+{
+  auctionIds: string[];  // Array of auction IDs
+  tx: TransactionResponse;
+}
+```
+
+::alert{type="info"}
+**Gas Efficient:** Batch operations save significant gas compared to creating auctions individually. Creating 20 auctions separately would cost ~20x more in gas fees.
+::
+
 ### Place Bid
 
 Submit a bid on an active auction.
@@ -78,19 +114,40 @@ const { tx } = await sdk.auction.placeBid({
 - Must exceed starting bid if first bid
 - Typically requires 5-10% minimum increment
 
-### Cancel Auction
+### Batch Cancel Auctions (v2.1.2)
 
-Cancel an active auction (new in v1.1.4).
+Cancel multiple auctions at once.
 
 ```typescript
-const { tx } = await sdk.auction.cancelAuction('auctionId');
+const { cancelledCount, tx } = await sdk.auction.batchCancelAuction([
+  'auction-id-1',
+  'auction-id-2',
+  'auction-id-3',
+]);
 ```
 
 **Parameters:**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `auctionId` | `string` | Auction to cancel |
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `auctionIds` | `string[]` | Yes | Auction IDs to cancel |
+
+**Returns:**
+
+```typescript
+{
+  cancelledCount: number;  // Number of auctions cancelled
+  tx: TransactionResponse;
+}
+```
+
+### Cancel Auction
+
+Cancel a single active auction.
+
+```typescript
+const { tx } = await sdk.auction.cancelAuction('auctionId');
+```
 
 **Conditions:**
 - Only auction creator can cancel
@@ -99,7 +156,7 @@ const { tx } = await sdk.auction.cancelAuction('auctionId');
 
 ### Get Active Auctions
 
-Query all active auctions with pagination (new in v1.1.4).
+Query all active auctions with pagination.
 
 ```typescript
 const { items, total } = await sdk.auction.getActiveAuctions(
@@ -131,7 +188,7 @@ interface Auction {
 
 ### Get Auctions by Seller
 
-Get all auctions created by a specific seller (new in v1.1.4).
+Get all auctions created by a specific seller.
 
 ```typescript
 const { items } = await sdk.auction.getAuctionsBySeller(
@@ -151,10 +208,13 @@ import { useAuction } from 'zuno-marketplace-sdk/react';
 function AuctionComponent() {
   const {
     createEnglishAuction,
+    batchCreateEnglishAuction,
     placeBid,
+    batchCancelAuction,
     cancelAuction
   } = useAuction();
 
+  // Create single auction
   const handleCreateAuction = async () => {
     const { auctionId, tx } = await createEnglishAuction.mutateAsync({
       collectionAddress: '0x...',
@@ -167,6 +227,20 @@ function AuctionComponent() {
     await tx.wait();
   };
 
+  // Batch create multiple auctions
+  const handleBatchCreate = async () => {
+    const { auctionIds, tx } = await batchCreateEnglishAuction.mutateAsync({
+      collectionAddress: '0x...',
+      tokenIds: ['1', '2', '3', '4', '5'],
+      startingBid: '1.0',
+      duration: 86400 * 7,
+    });
+
+    console.log('Created auctions:', auctionIds.length);
+    await tx.wait();
+  };
+
+  // Place bid
   const handlePlaceBid = async () => {
     const { tx } = await placeBid.mutateAsync({
       auctionId: '1',
@@ -176,10 +250,24 @@ function AuctionComponent() {
     await tx.wait();
   };
 
+  // Batch cancel auctions
+  const handleBatchCancel = async () => {
+    const { cancelledCount, tx } = await batchCancelAuction.mutateAsync([
+      'auction-1',
+      'auction-2',
+      'auction-3',
+    ]);
+
+    console.log('Cancelled:', cancelledCount);
+    await tx.wait();
+  };
+
   return (
     <div>
       <button onClick={handleCreateAuction}>Create Auction</button>
+      <button onClick={handleBatchCreate}>Batch Create (5)</button>
       <button onClick={handlePlaceBid}>Place Bid</button>
+      <button onClick={handleBatchCancel}>Batch Cancel</button>
     </div>
   );
 }
@@ -196,7 +284,7 @@ const sdk = new ZunoSDK({
 });
 
 async function runAuction() {
-  // Step 1: Create auction
+  // Step 1: Create single auction
   const { auctionId, tx: createTx } =
     await sdk.auction.createEnglishAuction({
       collectionAddress: '0x1234...',
@@ -208,7 +296,19 @@ async function runAuction() {
   await createTx.wait();
   console.log('Auction created:', auctionId);
 
-  // Step 2: Place bid
+  // Step 2: Batch create multiple auctions
+  const { auctionIds, tx: batchTx } =
+    await sdk.auction.batchCreateEnglishAuction({
+      collectionAddress: '0x1234...',
+      tokenIds: ['1', '2', '3', '4', '5'],
+      startingBid: '0.5',
+      duration: 86400 * 7,
+    });
+
+  await batchTx.wait();
+  console.log('Created', auctionIds.length, 'auctions');
+
+  // Step 3: Place bid
   const { tx: bidTx } = await sdk.auction.placeBid({
     auctionId,
     amount: '1.2',
@@ -217,13 +317,16 @@ async function runAuction() {
   await bidTx.wait();
   console.log('Bid placed successfully');
 
-  // Step 3: Query active auctions
+  // Step 4: Query active auctions
   const { items } = await sdk.auction.getActiveAuctions(1, 20);
   console.log(`Found ${items.length} active auctions`);
 
-  // Step 4: Cancel if needed (before any bids)
-  // const { tx: cancelTx } = await sdk.auction.cancelAuction(auctionId);
-  // await cancelTx.wait();
+  // Step 5: Batch cancel auctions (if needed)
+  const { cancelledCount, tx: cancelTx } =
+    await sdk.auction.batchCancelAuction(auctionIds.slice(0, 3));
+
+  await cancelTx.wait();
+  console.log('Cancelled', cancelledCount, 'auctions');
 }
 
 runAuction();
@@ -240,6 +343,8 @@ graph LR
     D -->|No| C
     E --> F[Transfer NFT to Winner]
     B --> G[Cancel]
+    H[Batch Create] --> B
+    B --> I[Batch Cancel]
 ```
 
 ## Error Handling
@@ -278,11 +383,16 @@ await approval.wait();
 ::
 
 ::alert{type="info"}
-**Set minimum bid increment** - Most auctions require 5-10% increase:
+**Use batch operations for efficiency** - When listing multiple NFTs for auction:
 
 ```typescript
-const currentBid = 1.0;
-const minBid = currentBid * 1.1;  // 10% increment
+// More efficient than individual calls
+const { auctionIds } = await sdk.auction.batchCreateEnglishAuction({
+  collectionAddress: '0x...',
+  tokenIds: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+  startingBid: '1.0',
+  duration: 86400 * 7,
+});
 ```
 ::
 
