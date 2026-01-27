@@ -1,15 +1,15 @@
 ---
 seo:
-  title: Zuno Marketplace Documentation
-  description: Comprehensive documentation for Zuno Marketplace ecosystem including SDK, Metadata, Indexer, and ABIs services. Build NFT marketplace applications with enterprise-grade tools.
+  title: Zuno Marketplace SDK Documentation
+  description: Comprehensive documentation for Zuno Marketplace SDK v2.1.2. Build NFT marketplace applications with TypeScript, React hooks, and Web3 integration.
 ---
 
 ::u-page-hero
 #title
-Zuno Marketplace Documentation
+Zuno Marketplace SDK
 
 #description
-Complete documentation ecosystem for building enterprise-grade NFT marketplace applications. SDK, Metadata services, Indexer, and ABIs all in one place.
+All-in-One NFT Marketplace SDK with Wagmi & React Query built-in. Build enterprise-grade NFT marketplace applications with TypeScript.
 
 #links
   :::u-button
@@ -36,7 +36,7 @@ Complete documentation ecosystem for building enterprise-grade NFT marketplace a
 
 ::u-page-section
 #title
-Complete NFT Marketplace Ecosystem
+SDK Features
 
 #features
   :::u-page-feature
@@ -45,46 +45,46 @@ Complete NFT Marketplace Ecosystem
   to: /sdk/getting-started/installation
   ---
   #title
-  [Zuno SDK]{.text-primary}
+  [TypeScript-First]{.text-primary}
 
   #description
-  TypeScript-first SDK with 21+ React hooks. Build NFT marketplace features with Wagmi and React Query integration. Exchange, Collections, Auctions, and more.
+  Full type safety with 21+ React hooks. Exchange, Collections, Auctions, Offers & Bundles modules.
   :::
 
   :::u-page-feature
   ---
-  icon: i-heroicons-server-stack
-  to: /metadata/getting-started/installation
+  icon: i-heroicons-bolt
+  to: /sdk/core-modules/exchange
   ---
   #title
-  [Metadata Service]{.text-primary}
+  [ERC721 & ERC1155]{.text-primary}
 
   #description
-  Enterprise-grade NFT metadata management with OpenSea compatibility, IPFS storage, and comprehensive API for digital assets and media processing.
+  Complete NFT marketplace support. List, buy, sell both ERC721 and ERC1155 tokens with amount handling.
+  :::
+
+  :::u-page-feature
+  ---
+  icon: i-heroicons-globe-alt
+  to: /sdk/core-modules/auction
+  ---
+  #title
+  [Auctions]{.text-primary}
+
+  #description
+  English & Dutch auctions with batch operations. Create up to 20 auctions per transaction.
   :::
 
   :::u-page-feature
   ---
   icon: i-heroicons-circle-stack
-  to: /indexer/getting-started/installation
+  to: /sdk/core-modules/collection
   ---
   #title
-  [Event Indexer]{.text-primary}
+  [Collection Management]{.text-primary}
 
   #description
-  Real-time blockchain event indexer with event-first architecture. 83% schema reduction with domain-driven design and multi-chain support.
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-heroicons-globe-americas
-  to: /abis/getting-started/installation
-  ---
-  #title
-  [ABIs Service]{.text-primary}
-
-  #description
-  Enterprise-grade ABI marketplace with multi-network support, IPFS storage, and tiered API access for smart contract integration.
+  Create ERC721 collections, mint NFTs, manage allowlists. Full contract interaction support.
   :::
 ::
 
@@ -117,15 +117,7 @@ Production-ready tools designed for scaling NFT marketplace applications with en
   color: purple
   variant: subtle
   ---
-  Next.js 16
-  :::
-
-  :::u-badge
-  ---
-  color: gray
-  variant: subtle
-  ---
-  PostgreSQL
+  Next.js 15
   :::
 
   :::u-badge
@@ -133,13 +125,21 @@ Production-ready tools designed for scaling NFT marketplace applications with en
   color: orange
   variant: subtle
   ---
-  Multi-Chain
+  Wagmi v2
+  :::
+
+  :::u-badge
+  ---
+  color: pink
+  variant: subtle
+  ---
+  TanStack Query v5
   :::
 ::
 
 ::u-page-section
 #title
-Quick Start Guides
+Quick Start
 
 #features
   :::u-page-feature
@@ -148,33 +148,33 @@ Quick Start Guides
   to: /sdk/getting-started/installation
   ---
   #title
-  [SDK Quick Start]{.text-primary}
+  [Installation]{.text-primary}
 
   #description
-  Get started with the Zuno Marketplace SDK in minutes. Install dependencies, configure your app, and make your first API call.
+  Install SDK v2.1.2 with npm. Set up Wagmi, React Query, and configure your app.
   :::
 
   :::u-page-feature
   ---
-  icon: i-heroicons-cog-6-tooth
-  to: /metadata/getting-started/installation
+  icon: i-heroicons-play-circle
+  to: /sdk/getting-started/quick-start
   ---
   #title
-  [Metadata Setup]{.text-primary}
+  [5-Minute Quick Start]{.text-primary}
 
   #description
-  Deploy the metadata service with PostgreSQL, Redis, and IPFS storage. Configure OpenSea-compatible endpoints.
+  List your first NFT in 5 minutes. Setup provider, connect wallet, and create a listing.
   :::
 
   :::u-page-feature
   ---
-  icon: i-heroicons-arrow-path
-  to: /indexer/getting-started/installation
+  icon: i-heroicons-book-open
+  to: /sdk/core-modules/exchange
   ---
   #title
-  [Indexer Configuration]{.text-primary}
+  [API Reference]{.text-primary}
 
   #description
-  Set up real-time event indexing with automatic configuration generation from Zuno API and multi-chain support.
+  Complete API documentation for Exchange, Auction, Collection modules with examples.
   :::
 ::

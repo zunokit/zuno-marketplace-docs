@@ -1,8 +1,8 @@
 ---
 title: "Zuno Marketplace SDK"
 package: "sdk"
-version: "1.1.4"
-lastUpdated: "2025-11-25"
+version: "2.1.2"
+lastUpdated: "2026-01-27"
 changeFrequency: "monthly"
 scope: "guide"
 context: "standalone"
@@ -19,8 +19,9 @@ relatedTopics:
 <div class="flex gap-2 mb-6 flex-wrap">
   <UBadge color="blue" variant="subtle">TypeScript 5.6</UBadge>
   <UBadge color="green" variant="subtle">React 19</UBadge>
-  <UBadge color="purple" variant="subtle">v1.1.4</UBadge>
+  <UBadge color="purple" variant="subtle">v2.1.2</UBadge>
   <UBadge color="gray" variant="subtle">MIT License</UBadge>
+  <UBadge color="orange" variant="subtle">ERC721 + ERC1155</UBadge>
 </div>
 
 > **All-in-One NFT Marketplace SDK with Wagmi & React Query built-in**
@@ -37,18 +38,33 @@ A comprehensive, type-safe SDK for building NFT marketplace applications on Ethe
 - 🚀 **Production Ready** - Robust error handling and retries
 - 🪝 **Modern React** - useCallback, useMemo optimization
 - 📱 **Wallet Support** - WalletConnect, MetaMask, Coinbase Wallet
+- 🔥 **ERC1155 Support** - Multi-token listings with amount handling
+- ⚡ **Batch Operations** - Create up to 20 auctions per transaction
+- 🛠️ **DevTools** - In-app debugging panel
 
-## 🆕 What's New in v1.1.4
+## 🆕 What's New in v2.1.2
 
-- **Standardized Response Format** - All mutation methods now return `{ tx, ...data }` for consistency
-- **New Query Methods** - `getActiveListings()`, `getActiveAuctions()`, `getAuctionsBySeller()`
-- **New Mutation Methods** - `updateListingPrice()`, `cancelAuction()`
-- **Better TypeScript Inference** - Improved type inference for all method responses
-- **Listing ID Extraction** - `listNFT()` now returns `{ listingId, tx }` automatically
+### ERC1155 Support
+- **Multi-Token Listings** - `listNFT()` now supports `amount` parameter for ERC1155
+- **Auto Token Detection** - Automatically detects ERC721 vs ERC1155 standard
+- **Amount Validation** - Comprehensive validation for amount parameters
 
-::alert{type="info"}
-**Migration Note**: If upgrading from v1.1.3, update your code to destructure responses.
-::
+### Batch Operations
+- **Batch Auction Creation** - Create up to 20 English auctions in one transaction
+- **Batch Listing** - List multiple ERC1155 tokens efficiently
+- **Batch Cancellation** - Cancel multiple auctions at once
+
+### Allowlist Management
+- **Allowlist Setup** - Configure allowlist for minting restrictions
+- **Add to Allowlist** - Add addresses to minting allowlist
+- **Set Allowlist Only** - Enable permanent allowlist mode
+- **Check Allowlist Status** - Query if address is allowlisted
+
+### SSR & Performance
+- **WagmiProviderSync** - SSR-safe provider state synchronization
+- **Transaction Retry Logic** - Enhanced retry mechanism with history tracking
+- **Approval Caching** - Reduced RPC calls with approval status caching
+- **Batch Progress Events** - Real-time progress updates for batch operations
 
 ## 📦 Installation
 
@@ -77,19 +93,37 @@ export default function RootLayout({ children }) {
 import { useExchange, useWallet } from 'zuno-marketplace-sdk/react';
 
 export default function HomePage() {
-  const { address, connect } = useWallet();
+  const { address, connect, isConnected } = useWallet();
   const { listNFT } = useExchange();
 
   const handleList = async () => {
+    // ERC721 listing
     const { listingId, tx } = await listNFT.mutateAsync({
       collectionAddress: '0x...',
       tokenId: '1',
       price: '1.5',
       duration: 86400,
     });
+
+    // ERC1155 listing with amount
+    const { listingId: erc1155Listing } = await listNFT.mutateAsync({
+      collectionAddress: '0x...',
+      tokenId: '1',
+      amount: '10',  // List 10 tokens
+      price: '1.5',
+      duration: 86400,
+    });
   };
 
-  return <button onClick={handleList}>List NFT</button>;
+  return (
+    <div>
+      {!isConnected ? (
+        <button onClick={() => connect()}>Connect Wallet</button>
+      ) : (
+        <button onClick={handleList}>List NFT</button>
+      )}
+    </div>
+  );
 }
 ```
 
@@ -106,9 +140,3 @@ export default function HomePage() {
   21+ React hooks for marketplace features
   ::
 ::
-
-## See Also
-
-- **[Metadata Service](/metadata/api-reference/metadata-endpoints)** - Manage NFT metadata
-- **[ABIs Service](/abis/api-reference/abis-endpoints)** - Contract ABIs and networks
-- **[Indexer](/indexer/domain-architecture/event-first)** - Blockchain event indexing
