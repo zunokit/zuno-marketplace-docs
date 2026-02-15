@@ -11,19 +11,19 @@ Complete API reference for Zuno SDK v2.1.2. All methods, hooks, and types with s
 ## APIs
 
 ::card-grid
-  ::card{icon="i-heroicons-arrow-path" title="Exchange API" to="/sdk/api-reference/exchange-api"}
+  ::card{icon="i-heroicons-arrow-path" title="Exchange API" to="/api-reference/exchange-api"}
   NFT listings, purchases, price updates, batch operations for ERC721 & ERC1155
   ::
-  ::card{icon="i-heroicons-gavel" title="Auction API" to="/sdk/api-reference/auction-api"}
+  ::card{icon="i-heroicons-gavel" title="Auction API" to="/api-reference/auction-api"}
   English/Dutch auctions, bidding, batch operations
   ::
-  ::card{icon="i-heroicons-cube" title="Collection API" to="/sdk/api-reference/collection-api"}
+  ::card{icon="i-heroicons-cube" title="Collection API" to="/api-reference/collection-api"}
   Create collections, minting, allowlist management
   ::
-  ::card{icon="i-heroicons-code-bracket" title="React Hooks" to="/sdk/api-reference/hooks-api"}
+  ::card{icon="i-heroicons-code-bracket" title="React Hooks" to="/api-reference/hooks-api"}
   All 10+ hooks with signatures and return values
   ::
-  ::card{icon="i-heroicons-tag" title="Types" to="/sdk/api-reference/types"}
+  ::card{icon="i-heroicons-tag" title="Types" to="/api-reference/types"}
   Configuration, entity, transaction, and error types
   ::
 ::
@@ -64,6 +64,6 @@ Complete API reference for Zuno SDK v2.1.2. All methods, hooks, and types with s
 
 ## See Also
 
-- [Core Modules](/sdk/core-modules/exchange) - Usage guides
-- [React Hooks](/sdk/react-hooks/overview) - Hook patterns
-- [Integration Guides](/sdk/integration-guides/nextjs-setup) - Setup examples
+- [Core Modules](/core-modules/exchange) - Usage guides
+- [React Hooks](/react-hooks/overview) - Hook patterns
+- [Integration Guides](/integration-guides/nextjs-setup) - Setup examples

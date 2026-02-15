@@ -915,9 +915,9 @@ Comprehensive tutorial for integrating Zuno SDK into a Next.js project, based on
 
     ## Next Steps
 
-    - Explore [API Reference](/sdk/api-reference) for all available hooks
+    - Explore [API Reference](/api-reference) for all available hooks
     - Check [Recipes](#tab-recipes) tab for quick patterns
-    - Read [Integration Reference](/sdk/integration-guides/zuno-mini-reference) for architecture details
+    - Read [Integration Reference](/integration-guides/zuno-mini-reference) for architecture details
   ::
 
   ::div{label="Recipes"}

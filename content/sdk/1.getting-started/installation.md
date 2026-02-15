@@ -178,9 +178,9 @@ function App({ children }) {
 
 After installation, proceed with:
 
-- [Quick Start Guide](/sdk/getting-started/quick-start) - Set up your first marketplace integration
-- [Core Modules](/sdk/core-modules/exchange) - Learn about Exchange, Collection, Auction modules
-- [React Hooks](/sdk/react-hooks/overview) - Explore React hooks for wallet and contract interactions
+- [Quick Start Guide](/getting-started/quick-start) - Set up your first marketplace integration
+- [Core Modules](/core-modules/exchange) - Learn about Exchange, Collection, Auction modules
+- [React Hooks](/react-hooks/overview) - Explore React hooks for wallet and contract interactions
 
 ## Troubleshooting
 

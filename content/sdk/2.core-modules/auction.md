@@ -411,6 +411,6 @@ if (auction.endsAt < Date.now() / 1000) {
 
 ## See Also
 
-- **[Exchange Module](/sdk/core-modules/exchange)** - Fixed-price NFT sales
-- **[Collection Module](/sdk/core-modules/collection)** - Create NFT collections
-- **[Offers & Bundles](/sdk/core-modules/offers-bundles)** - Alternative sale methods
+- **[Exchange Module](/core-modules/exchange)** - Fixed-price NFT sales
+- **[Collection Module](/core-modules/collection)** - Create NFT collections
+- **[Offers & Bundles](/core-modules/offers-bundles)** - Alternative sale methods

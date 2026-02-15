@@ -130,13 +130,13 @@ export default function HomePage() {
 ## 📖 Documentation
 
 ::card-grid
-  ::card{icon="i-heroicons-rocket-launch" title="Getting Started" to="/sdk/getting-started/installation"}
+  ::card{icon="i-heroicons-rocket-launch" title="Getting Started" to="/getting-started/installation"}
   Install and configure the SDK in your project
   ::
-  ::card{icon="i-heroicons-cube" title="Core Modules" to="/sdk/core-modules/exchange"}
+  ::card{icon="i-heroicons-cube" title="Core Modules" to="/core-modules/exchange"}
   Exchange, Collection, and Auction APIs
   ::
-  ::card{icon="i-heroicons-code-bracket" title="React Hooks" to="/sdk/react-hooks/overview"}
+  ::card{icon="i-heroicons-code-bracket" title="React Hooks" to="/react-hooks/overview"}
   21+ React hooks for marketplace features
   ::
 ::

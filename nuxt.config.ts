@@ -28,10 +28,11 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-07-11',
 
   nitro: {
+    routeRules: {
+      '/': { redirect: '/getting-started/installation', redirectCode: 308 }
+    },
     prerender: {
-      routes: [
-        '/'
-      ],
+      routes: [],
       crawlLinks: true,
       autoSubfolderIndex: false
     }

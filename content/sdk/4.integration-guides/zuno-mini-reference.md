@@ -312,6 +312,6 @@ export function shouldLogError(error: unknown): boolean {
 
 ## See Also
 
-- [Next.js Setup](/sdk/integration-guides/nextjs-setup) - Project initialization
-- [Wallet Integration](/sdk/integration-guides/wallet-integration) - Detailed wallet patterns
-- [Error Handling](/sdk/integration-guides/error-handling) - Error management patterns
+- [Next.js Setup](/integration-guides/nextjs-setup) - Project initialization
+- [Wallet Integration](/integration-guides/wallet-integration) - Detailed wallet patterns
+- [Error Handling](/integration-guides/error-handling) - Error management patterns

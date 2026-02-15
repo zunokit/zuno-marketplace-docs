@@ -3,16 +3,36 @@ import type { ContentNavigationItem } from '@nuxt/content'
 
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
-// Get SDK navigation children (only section needed)
-const sdkNavigation = computed(() => {
+// Use full navigation (SDK is default)
+const sdkNavigation = computed<ContentNavigationItem[]>(() => {
   if (!navigation?.value) return []
-
-  // Find the SDK navigation item by stem
-  const sdkNav = navigation.value.find(item => item.stem === 'sdk')
-
-  // Return only the children (index page is hidden via navigation: false in frontmatter)
-  return sdkNav?.children || []
+  // Flatten: show children of the first root section if only one
+  const roots = navigation.value
+  if (roots.length === 1 && roots[0].children) {
+    return roots[0].children as ContentNavigationItem[]
+  }
+  return roots as ContentNavigationItem[]
 })
+
+// Normalize links to drop the leading "/sdk" in URLs
+const normalizeTo = (p?: string) => {
+  if (!p) return '/'
+  if (p === '/sdk') return '/'
+  return p.startsWith('/sdk/') ? p.slice(4) : p
+}
+
+// Deep map navigation items to provide `to` used by UI links
+const mapForUi = (items: any[]): any[] =>
+  items?.map((item) => ({
+    ...item,
+    // Ensure both `to` and `path` point to public URLs (no /sdk)
+    to: normalizeTo((item as any).to || (item as any).path),
+    path: normalizeTo((item as any).path),
+    children: item.children ? mapForUi(item.children) : undefined
+  })) || []
+
+// Navigation used by UContentNavigation (with correct public links)
+const uiNavigation = computed(() => mapForUi(sdkNavigation.value))
 </script>
 
 <template>
@@ -22,7 +42,7 @@ const sdkNavigation = computed(() => {
         <UPageAside>
           <UContentNavigation
             highlight
-            :navigation="sdkNavigation"
+            :navigation="uiNavigation"
           />
         </UPageAside>
       </template>

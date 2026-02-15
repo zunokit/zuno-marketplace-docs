@@ -99,5 +99,5 @@ await sdk.bundles.createBundle({
 
 ## See Also
 
-- **[Exchange Module](/sdk/core-modules/exchange)** - Standard fixed-price sales
-- **[Auction Module](/sdk/core-modules/auction)** - Competitive bidding
+- **[Exchange Module](/core-modules/exchange)** - Standard fixed-price sales
+- **[Auction Module](/core-modules/auction)** - Competitive bidding

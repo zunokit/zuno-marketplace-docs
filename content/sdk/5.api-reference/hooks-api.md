@@ -112,5 +112,5 @@ function useProviderSync(): {
 
 ## See Also
 
-- [React Hooks Overview](/sdk/react-hooks/overview) - Hook patterns
-- [Integration Guides](/sdk/integration-guides/nextjs-setup) - Setup examples
+- [React Hooks Overview](/react-hooks/overview) - Hook patterns
+- [Integration Guides](/integration-guides/nextjs-setup) - Setup examples

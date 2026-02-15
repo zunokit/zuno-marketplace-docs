@@ -99,5 +99,5 @@ function batchCancelAuction(auctionIds: string[]): Promise<{
 
 ## See Also
 
-- [Auction Module](/sdk/core-modules/auction) - Usage guide
-- [Hooks API](/sdk/api-reference/hooks-api) - `useAuction` hook
+- [Auction Module](/core-modules/auction) - Usage guide
+- [Hooks API](/api-reference/hooks-api) - `useAuction` hook

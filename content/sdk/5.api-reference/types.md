@@ -150,5 +150,5 @@ enum ErrorCode {
 
 ## See Also
 
-- [Error Handling](/sdk/integration-guides/error-handling) - Error patterns
-- [Installation](/sdk/getting-started/installation) - Configuration
+- [Error Handling](/integration-guides/error-handling) - Error patterns
+- [Installation](/getting-started/installation) - Configuration

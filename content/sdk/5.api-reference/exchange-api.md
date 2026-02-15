@@ -245,5 +245,5 @@ function updateListingPrice(params: {
 
 ## See Also
 
-- [Exchange Module](/sdk/core-modules/exchange) - Usage guide
-- [Hooks API](/sdk/api-reference/hooks-api) - `useExchange` hook
+- [Exchange Module](/core-modules/exchange) - Usage guide
+- [Hooks API](/api-reference/hooks-api) - `useExchange` hook

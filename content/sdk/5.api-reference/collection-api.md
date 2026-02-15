@@ -100,5 +100,5 @@ function isInAllowlist(params: {
 
 ## See Also
 
-- [Collection Module](/sdk/core-modules/collection) - Usage guide
-- [Hooks API](/sdk/api-reference/hooks-api) - `useCollection` hook
+- [Collection Module](/core-modules/collection) - Usage guide
+- [Hooks API](/api-reference/hooks-api) - `useCollection` hook

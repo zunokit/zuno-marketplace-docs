@@ -416,7 +416,7 @@ function getUserFriendlyMessage(error: Error): string {
 
 ## See Also
 
-- [Integration Tutorial](/sdk/integration-guides/zuno-mini-tutorial) - Complete error handling walkthrough
-- [Integration Reference](/sdk/integration-guides/zuno-mini-reference) - Error handler implementation
-- [Wallet Integration](/sdk/integration-guides/wallet-integration) - Connection error handling
-- [Installation](/sdk/getting-started/installation) - Environment configuration
+- [Integration Tutorial](/integration-guides/zuno-mini-tutorial) - Complete error handling walkthrough
+- [Integration Reference](/integration-guides/zuno-mini-reference) - Error handler implementation
+- [Wallet Integration](/integration-guides/wallet-integration) - Connection error handling
+- [Installation](/getting-started/installation) - Environment configuration

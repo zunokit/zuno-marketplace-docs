@@ -337,7 +337,7 @@ useEffect(() => {
 
 ## See Also
 
-- [Integration Tutorial](/sdk/integration-guides/zuno-mini-tutorial) - Complete wallet integration walkthrough
-- [Integration Reference](/sdk/integration-guides/zuno-mini-reference) - Full provider implementation
-- [Next.js Setup](/sdk/integration-guides/nextjs-setup) - Project configuration
-- [Error Handling](/sdk/integration-guides/error-handling) - Error management patterns
+- [Integration Tutorial](/integration-guides/zuno-mini-tutorial) - Complete wallet integration walkthrough
+- [Integration Reference](/integration-guides/zuno-mini-reference) - Full provider implementation
+- [Next.js Setup](/integration-guides/nextjs-setup) - Project configuration
+- [Error Handling](/integration-guides/error-handling) - Error management patterns
