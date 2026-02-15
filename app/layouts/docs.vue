@@ -28,16 +28,18 @@ type NavLink = {
   [key: string]: unknown
 }
 
+type ItemWithExtras = ContentNavigationItem & { to?: string, title?: string }
+
 // Convert ContentNavigationItem tree to a link object with normalized public URLs
-const toLink = (item: ContentNavigationItem): NavLink => {
-  const title = (item as any).title || (item.path?.split('/').pop()?.replace(/-/g, ' ') ?? '')
+const toLink = (item: ItemWithExtras): NavLink => {
+  const title = item.title || (item.path?.split('/').pop()?.replace(/-/g, ' ') || '')
   return {
-    ...(item as unknown as Record<string, unknown>),
+    ...item,
     title,
-    to: normalizeTo((item as any).to || item.path),
+    to: normalizeTo(item.to || item.path),
     path: normalizeTo(item.path),
-    children: item.children?.map(toLink)
-  }
+    children: (item.children as ItemWithExtras[] | undefined)?.map(toLink)
+  } as NavLink
 }
 
 // Navigation used by UContentNavigation (with correct public links)

@@ -29,6 +29,7 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 interface SurroundItem {
   to?: string
   path?: string
+  title?: string
   [key: string]: unknown
 }
 
@@ -39,7 +40,9 @@ const normalizePublicPath = (p?: string) => {
   return p.startsWith('/sdk/') ? p.slice(4) : p
 }
 
-const surroundUi = computed<any[]>(() => {
+type SurroundUiItem = SurroundItem & { to: string, path: string, title: string }
+
+const surroundUi = computed<SurroundUiItem[]>(() => {
   const arr = Array.isArray(surround.value) ? (surround.value as unknown as SurroundItem[]) : []
   return arr
     .filter(Boolean)
@@ -47,7 +50,10 @@ const surroundUi = computed<any[]>(() => {
       const rawTo = item.to ?? item.path
       const to = normalizePublicPath(typeof rawTo === 'string' ? rawTo : undefined) || '/'
       const path = normalizePublicPath(typeof item.path === 'string' ? item.path : undefined) || to
-      return { ...(item as Record<string, unknown>), to, path }
+      const title = typeof item.title === 'string' && item.title.length > 0
+        ? item.title
+        : (typeof path === 'string' ? path.split('/').pop()?.replace(/-/g, ' ') || '' : '')
+      return { ...(item as Record<string, unknown>), to, path, title } as SurroundUiItem
     })
 })
 
