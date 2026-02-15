@@ -511,7 +511,7 @@ function NFTMarketplace() {
 
 ## See Also
 
-- **[Quick Start](/sdk/getting-started/quick-start)** - Setup guide
-- **[Exchange Module](/sdk/core-modules/exchange)** - Trading API
-- **[Collection Module](/sdk/core-modules/collection)** - NFT creation with allowlist
-- **[Auction Module](/sdk/core-modules/auction)** - Auction API
+- **[Quick Start](/getting-started/quick-start)** - Setup guide
+- **[Exchange Module](/core-modules/exchange)** - Trading API
+- **[Collection Module](/core-modules/collection)** - NFT creation with allowlist
+- **[Auction Module](/core-modules/auction)** - Auction API

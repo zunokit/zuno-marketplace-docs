@@ -88,5 +88,5 @@ position: 'bottom-right' | 'bottom-left' | 'top-right' | 'top-left'
 
 ## See Also
 
-- [Next.js Setup](/sdk/integration-guides/nextjs-setup) - DevTools in setup
-- [Installation](/sdk/getting-started/installation) - Configuration
+- [Next.js Setup](/integration-guides/nextjs-setup) - DevTools in setup
+- [Installation](/getting-started/installation) - Configuration

@@ -15,19 +15,19 @@ These guides provide real-world implementation patterns from production applicat
 ## Guides
 
 ::card-grid
-  ::card{icon="i-heroicons-academic-cap" title="Integration Tutorial" to="/sdk/integration-guides/zuno-mini-tutorial"}
+  ::card{icon="i-heroicons-academic-cap" title="Integration Tutorial" to="/integration-guides/zuno-mini-tutorial"}
   Start-from-scratch tutorial with progressive learning path (Beginner → Advanced)
   ::
-  ::card{icon="i-heroicons-server" title="Next.js Setup" to="/sdk/integration-guides/nextjs-setup"}
+  ::card{icon="i-heroicons-server" title="Next.js Setup" to="/integration-guides/nextjs-setup"}
   Complete Next.js 15 setup with App Router, SSR support, and environment configuration
   ::
-  ::card{icon="i-heroicons-code-bracket" title="Integration Reference" to="/sdk/integration-guides/zuno-mini-reference"}
+  ::card{icon="i-heroicons-code-bracket" title="Integration Reference" to="/integration-guides/zuno-mini-reference"}
   Real implementation patterns from production marketplace application
   ::
-  ::card{icon="i-heroicons-wallet" title="Wallet Integration" to="/sdk/integration-guides/wallet-integration"}
+  ::card{icon="i-heroicons-wallet" title="Wallet Integration" to="/integration-guides/wallet-integration"}
   Wallet connection patterns with MetaMask, WalletConnect, and auto-reconnect
   ::
-  ::card{icon="i-heroicons-shield-check" title="Error Handling" to="/sdk/integration-guides/error-handling"}
+  ::card{icon="i-heroicons-shield-check" title="Error Handling" to="/integration-guides/error-handling"}
   Transaction errors, network issues, and user-friendly error messages
   ::
 ::
@@ -63,6 +63,6 @@ Before following these guides, ensure you have:
 
 ## See Also
 
-- [Quick Start](/sdk/getting-started/quick-start) - 5-minute introduction
-- [Installation](/sdk/getting-started/installation) - SDK installation guide
-- [React Hooks](/sdk/react-hooks/overview) - Complete hooks reference
+- [Quick Start](/getting-started/quick-start) - 5-minute introduction
+- [Installation](/getting-started/installation) - SDK installation guide
+- [React Hooks](/react-hooks/overview) - Complete hooks reference

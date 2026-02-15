@@ -388,6 +388,6 @@ const { listingIds } = await sdk.exchange.batchListNFT({
 
 ## See Also
 
-- **[Collection Module](/sdk/core-modules/collection)** - Create and mint NFT collections
-- **[Auction Module](/sdk/core-modules/auction)** - Implement auction functionality
-- **[Offers & Bundles](/sdk/core-modules/offers-bundles)** - Handle offers and bundle sales
+- **[Collection Module](/core-modules/collection)** - Create and mint NFT collections
+- **[Auction Module](/core-modules/auction)** - Implement auction functionality
+- **[Offers & Bundles](/core-modules/offers-bundles)** - Handle offers and bundle sales

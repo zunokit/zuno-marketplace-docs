@@ -126,5 +126,5 @@ function ERC1155Component() {
 
 ## See Also
 
-- [Batch Operations](/sdk/advanced/batch-operations) - Multi-token batch listings
-- [Exchange API](/sdk/api-reference/exchange-api) - Full API reference
+- [Batch Operations](/advanced/batch-operations) - Multi-token batch listings
+- [Exchange API](/api-reference/exchange-api) - Full API reference

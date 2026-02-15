@@ -3,16 +3,47 @@ import type { ContentNavigationItem } from '@nuxt/content'
 
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
-// Get SDK navigation children (only section needed)
-const sdkNavigation = computed(() => {
-  if (!navigation?.value) return []
-
-  // Find the SDK navigation item by stem
-  const sdkNav = navigation.value.find(item => item.stem === 'sdk')
-
-  // Return only the children (index page is hidden via navigation: false in frontmatter)
-  return sdkNav?.children || []
+// Use full navigation (SDK is default)
+const sdkNavigation = computed<ContentNavigationItem[]>(() => {
+  const roots = navigation?.value || []
+  // Flatten: show children of the first root section if only one
+  if (roots.length === 1 && roots[0]?.children) {
+    return roots[0].children as ContentNavigationItem[]
+  }
+  return roots as ContentNavigationItem[]
 })
+
+// Normalize links to drop the leading "/sdk" in URLs
+const normalizeTo = (p?: string) => {
+  if (!p) return '/'
+  if (p === '/sdk') return '/'
+  return p.startsWith('/sdk/') ? p.slice(4) : p
+}
+
+type NavLink = {
+  path: string
+  to?: string
+  title: string
+  children?: NavLink[]
+  [key: string]: unknown
+}
+
+type ItemWithExtras = ContentNavigationItem & { to?: string, title?: string }
+
+// Convert ContentNavigationItem tree to a link object with normalized public URLs
+const toLink = (item: ItemWithExtras): NavLink => {
+  const title = item.title || (item.path?.split('/').pop()?.replace(/-/g, ' ') || '')
+  return {
+    ...item,
+    title,
+    to: normalizeTo(item.to || item.path),
+    path: normalizeTo(item.path),
+    children: (item.children as ItemWithExtras[] | undefined)?.map(toLink)
+  } as NavLink
+}
+
+// Navigation used by UContentNavigation (with correct public links)
+const uiNavigation = computed<NavLink[]>(() => (sdkNavigation.value || []).map(toLink))
 </script>
 
 <template>
@@ -22,7 +53,7 @@ const sdkNavigation = computed(() => {
         <UPageAside>
           <UContentNavigation
             highlight
-            :navigation="sdkNavigation"
+            :navigation="uiNavigation"
           />
         </UPageAside>
       </template>

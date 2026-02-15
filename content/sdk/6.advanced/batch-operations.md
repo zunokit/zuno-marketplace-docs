@@ -119,5 +119,5 @@ function BatchListComponent() {
 
 ## See Also
 
-- [ERC1155 Support](/sdk/advanced/erc1155-support) - Batch operations work best with ERC1155
-- [Exchange API](/sdk/api-reference/exchange-api) - Method signatures
+- [ERC1155 Support](/advanced/erc1155-support) - Batch operations work best with ERC1155
+- [Exchange API](/api-reference/exchange-api) - Method signatures

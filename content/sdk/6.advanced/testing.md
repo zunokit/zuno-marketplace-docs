@@ -128,5 +128,5 @@ vi.mock('zuno-marketplace-sdk/react', () => ({
 
 ## See Also
 
-- [Integration Guides](/sdk/integration-guides/nextjs-setup) - Setup examples
-- [Hooks API](/sdk/api-reference/hooks-api) - Hook signatures
+- [Integration Guides](/integration-guides/nextjs-setup) - Setup examples
+- [Hooks API](/api-reference/hooks-api) - Hook signatures

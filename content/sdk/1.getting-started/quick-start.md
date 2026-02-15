@@ -325,13 +325,13 @@ import {
 
 Now that you have the basics:
 
-- [Exchange Module](/sdk/core-modules/exchange) - Deep dive into listing and trading with ERC1155
-- [Collection Module](/sdk/core-modules/collection) - Create collections with allowlist management
-- [Auction Module](/sdk/core-modules/auction) - Implement batch auction functionality
-- [React Hooks](/sdk/react-hooks/overview) - Complete hooks reference
+- [Exchange Module](/core-modules/exchange) - Deep dive into listing and trading with ERC1155
+- [Collection Module](/core-modules/collection) - Create collections with allowlist management
+- [Auction Module](/core-modules/auction) - Implement batch auction functionality
+- [React Hooks](/react-hooks/overview) - Complete hooks reference
 
 ## Need Help?
 
-- **Documentation**: [Full API Reference](/sdk)
-- **Integration Guides**: See [Integration Guides](/sdk/integration-guides/nextjs-setup)
+- **Documentation**: [Full API Reference](/api-reference)
+- **Integration Guides**: See [Integration Guides](/integration-guides/nextjs-setup)
 - **Support**: Open an issue on [GitHub](https://github.com/ZunoKit/zuno-marketplace-sdk/issues)

@@ -10,15 +10,51 @@ const route = useRoute()
 const { toc } = useAppConfig()
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
-const { data: page } = await useAsyncData(route.path, () => queryCollection('docs').path(route.path).first())
+// Internal content path always lives under /sdk, while public URL does not
+const contentPath = computed(() => (route.path.startsWith('/sdk/') ? route.path : `/sdk${route.path}`))
+
+const { data: page } = await useAsyncData(route.path, () =>
+  queryCollection('docs').path(contentPath.value).first()
+)
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
-  return queryCollectionItemSurroundings('docs', route.path, {
+  return queryCollectionItemSurroundings('docs', contentPath.value, {
     fields: ['description']
   })
+})
+
+interface SurroundItem {
+  to?: string
+  path?: string
+  title?: string
+  [key: string]: unknown
+}
+
+// Normalize prev/next links for public URLs (drop leading /sdk)
+const normalizePublicPath = (p?: string) => {
+  if (!p) return p
+  if (p === '/sdk') return '/'
+  return p.startsWith('/sdk/') ? p.slice(4) : p
+}
+
+type SurroundUiItem = SurroundItem & { to: string, path: string, title: string }
+
+const surroundUi = computed<SurroundUiItem[]>(() => {
+  const arr = Array.isArray(surround.value) ? (surround.value as unknown as SurroundItem[]) : []
+  return arr
+    .filter(Boolean)
+    .map((item: SurroundItem) => {
+      const rawTo = item.to ?? item.path
+      const to = normalizePublicPath(typeof rawTo === 'string' ? rawTo : undefined) || '/'
+      const path = normalizePublicPath(typeof item.path === 'string' ? item.path : undefined) || to
+      const title = typeof item.title === 'string' && item.title.length > 0
+        ? item.title
+        : (typeof path === 'string' ? path.split('/').pop()?.replace(/-/g, ' ') || '' : '')
+      return { ...(item as Record<string, unknown>), to, path, title } as SurroundUiItem
+    })
 })
 
 const title = page.value.seo?.title || page.value.title
@@ -75,9 +111,9 @@ const links = computed(() => {
         :value="page"
       />
 
-      <USeparator v-if="surround?.length" />
+      <USeparator v-if="surroundUi && surroundUi.length" />
 
-      <UContentSurround :surround="surround" />
+      <UContentSurround :surround="surroundUi || []" />
     </UPageBody>
 
     <template

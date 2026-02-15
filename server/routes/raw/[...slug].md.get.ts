@@ -9,9 +9,15 @@ export default eventHandler(async (event) => {
     throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
   }
 
-  const path = withLeadingSlash(slug.replace('.md', ''))
+  // Public URLs don't include "/sdk"; content paths may. Try public path first, then fallback.
+  const publicPath = withLeadingSlash(slug.replace('.md', ''))
+  // Ensure sdkPath preserves separator between /sdk and the public path
+  const sdkPath = withLeadingSlash(`/sdk/${slug.replace('.md', '')}`)
 
-  const page = await queryCollection(event, 'docs' as keyof Collections).path(path).first()
+  let page = await queryCollection(event, 'docs' as keyof Collections).path(publicPath).first()
+  if (!page) {
+    page = await queryCollection(event, 'docs' as keyof Collections).path(sdkPath).first()
+  }
   if (!page) {
     throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
   }

@@ -434,5 +434,5 @@ await sdk.collection.setAllowlistOnly({
 
 ## See Also
 
-- **[Exchange Module](/sdk/core-modules/exchange)** - List and sell your NFTs
-- **[Auction Module](/sdk/core-modules/auction)** - Auction your NFTs
+- **[Exchange Module](/core-modules/exchange)** - List and sell your NFTs
+- **[Auction Module](/core-modules/auction)** - Auction your NFTs

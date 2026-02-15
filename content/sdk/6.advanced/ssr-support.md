@@ -96,5 +96,5 @@ SDK handles hydration automatically:
 
 ## See Also
 
-- [Next.js Setup](/sdk/integration-guides/nextjs-setup) - Full SSR setup
-- [Installation](/sdk/getting-started/installation) - Provider configuration
+- [Next.js Setup](/integration-guides/nextjs-setup) - Full SSR setup
+- [Installation](/getting-started/installation) - Provider configuration
