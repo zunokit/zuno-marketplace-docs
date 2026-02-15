@@ -26,6 +26,12 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
   })
 })
 
+interface SurroundItem {
+  to?: string
+  path?: string
+  [key: string]: unknown
+}
+
 // Normalize prev/next links for public URLs (drop leading /sdk)
 const normalizePublicPath = (p?: string) => {
   if (!p) return p
@@ -37,10 +43,10 @@ const surroundUi = computed(() => {
   const arr = Array.isArray(surround.value) ? surround.value : []
   return arr
     .filter(Boolean)
-    .map((item: any) => {
-      const rawTo = (item as any).to ?? (item as any).path
+    .map((item: SurroundItem) => {
+      const rawTo = item.to ?? item.path
       const to = normalizePublicPath(typeof rawTo === 'string' ? rawTo : undefined) || '/'
-      const path = normalizePublicPath((item as any).path) || to
+      const path = normalizePublicPath(item.path) || to
       return { ...item, to, path }
     })
 })

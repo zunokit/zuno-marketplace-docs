@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from '@nuxt/content'
 
+interface NavItemWithPath extends ContentNavigationItem {
+  to?: string
+  path?: string
+  children?: NavItemWithPath[]
+}
+
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
 // Use full navigation (SDK is default)
@@ -22,12 +28,12 @@ const normalizeTo = (p?: string) => {
 }
 
 // Deep map navigation items to provide `to` used by UI links
-const mapForUi = (items: any[]): any[] =>
-  items?.map((item) => ({
+const mapForUi = (items: NavItemWithPath[]): NavItemWithPath[] =>
+  items?.map(item => ({
     ...item,
     // Ensure both `to` and `path` point to public URLs (no /sdk)
-    to: normalizeTo((item as any).to || (item as any).path),
-    path: normalizeTo((item as any).path),
+    to: normalizeTo(item.to || item.path),
+    path: normalizeTo(item.path),
     children: item.children ? mapForUi(item.children) : undefined
   })) || []
 
