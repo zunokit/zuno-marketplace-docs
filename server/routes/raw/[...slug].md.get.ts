@@ -11,7 +11,8 @@ export default eventHandler(async (event) => {
 
   // Public URLs don't include "/sdk"; content paths may. Try public path first, then fallback.
   const publicPath = withLeadingSlash(slug.replace('.md', ''))
-  const sdkPath = withLeadingSlash(`/sdk${slug.replace('.md', '')}`)
+  // Ensure sdkPath preserves separator between /sdk and the public path
+  const sdkPath = withLeadingSlash(`/sdk/${slug.replace('.md', '')}`)
 
   let page = await queryCollection(event, 'docs' as keyof Collections).path(publicPath).first()
   if (!page) {

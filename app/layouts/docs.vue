@@ -1,20 +1,13 @@
 <script setup lang="ts">
 import type { ContentNavigationItem } from '@nuxt/content'
 
-interface NavItemWithPath extends ContentNavigationItem {
-  to?: string
-  path?: string
-  children?: NavItemWithPath[]
-}
-
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
 
 // Use full navigation (SDK is default)
 const sdkNavigation = computed<ContentNavigationItem[]>(() => {
-  if (!navigation?.value) return []
+  const roots = navigation?.value || []
   // Flatten: show children of the first root section if only one
-  const roots = navigation.value
-  if (roots.length === 1 && roots[0].children) {
+  if (roots.length === 1 && roots[0]?.children) {
     return roots[0].children as ContentNavigationItem[]
   }
   return roots as ContentNavigationItem[]
@@ -27,18 +20,28 @@ const normalizeTo = (p?: string) => {
   return p.startsWith('/sdk/') ? p.slice(4) : p
 }
 
-// Deep map navigation items to provide `to` used by UI links
-const mapForUi = (items: NavItemWithPath[]): NavItemWithPath[] =>
-  items?.map(item => ({
-    ...item,
-    // Ensure both `to` and `path` point to public URLs (no /sdk)
-    to: normalizeTo(item.to || item.path),
+type NavLink = {
+  path: string
+  to?: string
+  title: string
+  children?: NavLink[]
+  [key: string]: unknown
+}
+
+// Convert ContentNavigationItem tree to a link object with normalized public URLs
+const toLink = (item: ContentNavigationItem): NavLink => {
+  const title = (item as any).title || (item.path?.split('/').pop()?.replace(/-/g, ' ') ?? '')
+  return {
+    ...(item as unknown as Record<string, unknown>),
+    title,
+    to: normalizeTo((item as any).to || item.path),
     path: normalizeTo(item.path),
-    children: item.children ? mapForUi(item.children) : undefined
-  })) || []
+    children: item.children?.map(toLink)
+  }
+}
 
 // Navigation used by UContentNavigation (with correct public links)
-const uiNavigation = computed(() => mapForUi(sdkNavigation.value))
+const uiNavigation = computed<NavLink[]>(() => (sdkNavigation.value || []).map(toLink))
 </script>
 
 <template>

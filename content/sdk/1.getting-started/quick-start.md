@@ -332,6 +332,6 @@ Now that you have the basics:
 
 ## Need Help?
 
-- **Documentation**: [Full API Reference](/sdk)
+- **Documentation**: [Full API Reference](/api-reference)
 - **Integration Guides**: See [Integration Guides](/integration-guides/nextjs-setup)
 - **Support**: Open an issue on [GitHub](https://github.com/ZunoKit/zuno-marketplace-sdk/issues)

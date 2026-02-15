@@ -29,7 +29,8 @@ export default defineNuxtConfig({
 
   nitro: {
     routeRules: {
-      '/': { redirect: '/getting-started/installation', redirectCode: 308 }
+      // Use Nitro redirect format { redirect: string | { to, statusCode } }
+      '/': { redirect: { to: '/getting-started/installation', statusCode: 308 } }
     },
     prerender: {
       routes: [],

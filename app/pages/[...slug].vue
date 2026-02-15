@@ -39,15 +39,15 @@ const normalizePublicPath = (p?: string) => {
   return p.startsWith('/sdk/') ? p.slice(4) : p
 }
 
-const surroundUi = computed(() => {
-  const arr = Array.isArray(surround.value) ? surround.value : []
+const surroundUi = computed<any[]>(() => {
+  const arr = Array.isArray(surround.value) ? (surround.value as unknown as SurroundItem[]) : []
   return arr
     .filter(Boolean)
     .map((item: SurroundItem) => {
       const rawTo = item.to ?? item.path
       const to = normalizePublicPath(typeof rawTo === 'string' ? rawTo : undefined) || '/'
-      const path = normalizePublicPath(item.path) || to
-      return { ...item, to, path }
+      const path = normalizePublicPath(typeof item.path === 'string' ? item.path : undefined) || to
+      return { ...(item as Record<string, unknown>), to, path }
     })
 })
 
