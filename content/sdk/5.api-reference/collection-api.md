@@ -6,7 +6,7 @@ complexity: "intermediate"
 category: "api"
 ---
 
-Collection module API for creating NFT collections and managing allowlists (v2.1.2).
+Collection module API for creating NFT collections and managing allowlists (v2.2.1).
 
 ## Methods
 
@@ -53,7 +53,7 @@ function mintERC721(params: {
 }): Promise<{ tokenId: string; tx: TransactionResponse }>
 ```
 
-### setupAllowlist (v2.1.2)
+### setupAllowlist (v2.2.1)
 
 Configure allowlist.
 
@@ -65,7 +65,7 @@ function setupAllowlist(params: {
 }): Promise<{ tx: TransactionResponse }>
 ```
 
-### addToAllowlist (v2.1.2)
+### addToAllowlist (v2.2.1)
 
 Add addresses to allowlist.
 
@@ -76,7 +76,7 @@ function addToAllowlist(params: {
 }): Promise<{ tx: TransactionResponse }>
 ```
 
-### setAllowlistOnly (v2.1.2)
+### setAllowlistOnly (v2.2.1)
 
 Enable/disable allowlist-only mode.
 
@@ -87,7 +87,7 @@ function setAllowlistOnly(params: {
 }): Promise<{ tx: TransactionResponse }>
 ```
 
-### isInAllowlist (v2.1.2)
+### isInAllowlist (v2.2.1)
 
 Check if address is allowlisted.
 

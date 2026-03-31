@@ -6,7 +6,7 @@ complexity: "advanced"
 category: "advanced"
 ---
 
-Complete guide for ERC1155 multi-token support in Zuno SDK v2.1.2.
+Complete guide for ERC1155 multi-token support in Zuno SDK v2.2.1.
 
 ## ERC1155 vs ERC721
 

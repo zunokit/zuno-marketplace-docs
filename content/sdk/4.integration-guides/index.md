@@ -6,7 +6,7 @@ complexity: "intermediate"
 category: "integration"
 ---
 
-Comprehensive integration documentation for building production-ready NFT marketplace applications with Zuno SDK v2.1.2.
+Comprehensive integration documentation for building production-ready NFT marketplace applications with Zuno SDK v2.2.1.
 
 ## Overview
 

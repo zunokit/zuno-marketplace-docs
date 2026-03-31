@@ -6,7 +6,7 @@ complexity: "intermediate"
 category: "integration"
 ---
 
-Real implementation patterns from production NFT marketplace applications built with Next.js 15 and Zuno SDK v2.1.2.
+Real implementation patterns from production NFT marketplace applications built with Next.js 15 and Zuno SDK v2.2.1.
 
 ## Overview
 
@@ -250,7 +250,9 @@ function useAuctionActions(auctionId: string) {
 export const defaultConfig: ZunoSDKConfig = {
   apiKey: process.env.NEXT_PUBLIC_ZUNO_API_KEY || "",
   network: parseInt(process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID) || 31337,
-  apiUrl: process.env.NEXT_PUBLIC_ZUNO_API_URL,
+  ...(process.env.NEXT_PUBLIC_ZUNO_API_URL
+    ? { apiUrl: process.env.NEXT_PUBLIC_ZUNO_API_URL }
+    : {}),
   rpcUrl: process.env.NEXT_PUBLIC_RPC_URL,
   cache: {
     ttl: 300000,   // 5 minutes
@@ -266,7 +268,7 @@ export const defaultConfig: ZunoSDKConfig = {
 };
 ```
 
-**Pattern:** All sensitive values from environment, with sensible defaults.
+**Pattern:** All sensitive values from environment, with sensible defaults. Override `apiUrl` only when you need a non-default registry API.
 
 ## Error Handling Pattern
 

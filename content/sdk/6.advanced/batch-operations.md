@@ -6,7 +6,7 @@ complexity: "advanced"
 category: "advanced"
 ---
 
-Execute multiple blockchain operations in a single transaction with batch operations (v2.1.2).
+Execute multiple blockchain operations in a single transaction with batch operations (v2.2.1).
 
 ## Overview
 

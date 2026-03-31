@@ -1,7 +1,7 @@
 ---
 title: "Installation"
 package: "sdk"
-lastUpdated: "2026-01-27"
+lastUpdated: "2026-03-31"
 scope: "guide"
 complexity: "beginner"
 category: "installation"
@@ -10,7 +10,7 @@ relatedTopics:
   - "configuration"
 ---
 
-Get started with the Zuno SDK v2.1.2 for building NFT marketplace applications with type-safe, React-first integration.
+Get started with the Zuno SDK v2.2.1 for building NFT marketplace applications with type-safe, React-first integration.
 
 ## Prerequisites
 
@@ -45,7 +45,7 @@ yarn add zuno-marketplace-sdk ethers@6 @tanstack/react-query wagmi viem
 
 | Package | Purpose | Version |
 |---------|---------|---------|
-| `zuno-marketplace-sdk` | Core SDK with TypeScript APIs | v2.1.2+ |
+| `zuno-marketplace-sdk` | Core SDK with TypeScript APIs | v2.2.1+ |
 | `ethers` | Ethereum library for contract interactions | v6.x |
 | `@tanstack/react-query` | Data fetching & caching for React | v5.x |
 | `wagmi` | React hooks for Ethereum | v2.x |
@@ -62,12 +62,12 @@ npm list zuno-marketplace-sdk
 You should see output similar to:
 
 ```
-zuno-marketplace-sdk@2.1.2
+zuno-marketplace-sdk@2.2.1
 ```
 
 ## What's Included
 
-The SDK v2.1.2 provides:
+The SDK v2.2.1 provides:
 
 - 🎨 **Complete NFT Marketplace** - Exchange, Auctions, Offers, Bundles
 - ⚛️ **React Integration** - 21+ hooks with Wagmi & React Query
@@ -78,8 +78,9 @@ The SDK v2.1.2 provides:
 - ⚡ **Batch Operations** - Create up to 20 auctions per transaction
 - 🛠️ **DevTools** - In-app debugging panel
 - 🌐 **SSR Support** - WagmiProviderSync for Next.js App Router
+- 🌍 **Built-in API Client** - Default registry API integration with optional `apiUrl` override
 
-## Provider Setup (v2.1.2)
+## Provider Setup (v2.2.1)
 
 ### Basic Setup
 
@@ -133,10 +134,10 @@ export default function App({ children }) {
 ```
 
 ::alert{type="info"}
-**WagmiProviderSync:** v2.1.2 includes automatic WagmiProviderSync for SSR-safe provider state synchronization. No additional setup required for Next.js App Router.
+**WagmiProviderSync:** v2.2.1 includes automatic WagmiProviderSync for SSR-safe provider state synchronization. No additional setup required for Next.js App Router.
 ::
 
-## DevTools Setup (v2.1.2)
+## DevTools Setup (v2.2.1)
 
 Enable the in-app debugging panel for development:
 
@@ -212,7 +213,7 @@ Make sure your `tsconfig.json` includes:
 ::
 
 ::collapse{title="SSR hydration errors"}
-If you see hydration mismatches in Next.js, ensure you're using the `ZunoProvider` with SSR-safe configuration. The SDK v2.1.2 includes WagmiProviderSync for automatic SSR compatibility.
+If you see hydration mismatches in Next.js, ensure you're using the `ZunoProvider` with SSR-safe configuration. The SDK v2.2.1 includes WagmiProviderSync for automatic SSR compatibility.
 
 ```tsx
 // Correct - SDK handles SSR automatically

@@ -49,10 +49,10 @@ interface Listing {
   seller: string;
   collectionAddress: string;
   tokenId: string;
-  amount?: string;           // ERC1155 only (v2.1.2)
+  amount?: string;           // ERC1155 only (v2.2.1)
   price: string;
   expiresAt: number;
-  tokenStandard: "ERC721" | "ERC1155";  // v2.1.2
+  tokenStandard: "ERC721" | "ERC1155";  // v2.2.1
   status: "active" | "sold" | "cancelled";
 }
 ```
@@ -106,7 +106,7 @@ interface TransactionResult {
 }
 ```
 
-### BatchOperationResult (v2.1.2)
+### BatchOperationResult (v2.2.1)
 
 Batch operation result.
 
