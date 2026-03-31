@@ -27,7 +27,7 @@ The Exchange module provides methods for:
 ## ERC721 & ERC1155 Support
 
 ::alert{type="info"}
-**v2.1.2 Feature:** The Exchange module now supports both ERC721 and ERC1155 tokens. The SDK automatically detects the token standard based on the contract.
+**v2.2.1 Feature:** The Exchange module now supports both ERC721 and ERC1155 tokens. The SDK automatically detects the token standard based on the contract.
 
 - **ERC721:** Single token listings (backward compatible)
 - **ERC1155:** Multi-token listings with `amount` parameter
@@ -81,7 +81,7 @@ const { listingId, tx } = await sdk.exchange.listNFT({
 }
 ```
 
-### Batch List NFTs (v2.1.2)
+### Batch List NFTs (v2.2.1)
 
 List multiple ERC1155 tokens in a single transaction (max 20).
 
@@ -194,10 +194,10 @@ interface Listing {
   seller: string;
   collectionAddress: string;
   tokenId: string;
-  amount?: string;      // ERC1155 amount (v2.1.2)
+  amount?: string;      // ERC1155 amount (v2.2.1)
   price: string;
   expiresAt: number;
-  tokenStandard: 'ERC721' | 'ERC1155';  // v2.1.2
+  tokenStandard: 'ERC721' | 'ERC1155';  // v2.2.1
   status: 'active' | 'sold' | 'cancelled';
 }
 ```

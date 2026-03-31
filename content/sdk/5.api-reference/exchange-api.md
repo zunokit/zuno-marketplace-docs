@@ -139,7 +139,7 @@ const { listingId, tx } = await sdk.exchange.listNFT({
 
 ---
 
-### batchListNFT (v2.1.2)
+### batchListNFT (v2.2.1)
 
 List multiple ERC1155 tokens in a single transaction.
 

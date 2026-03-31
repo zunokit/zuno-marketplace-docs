@@ -1,7 +1,7 @@
 ---
 title: "React Hooks Overview"
 package: "sdk"
-lastUpdated: "2026-01-27"
+lastUpdated: "2026-03-31"
 scope: "guide"
 complexity: "intermediate"
 category: "react-hooks"
@@ -12,15 +12,14 @@ relatedTopics:
   - "auction"
 ---
 
-The Zuno SDK v2.1.2 provides 21+ React hooks for building marketplace applications with Wagmi and TanStack Query integration.
+The Zuno SDK v2.2.1 provides 21+ React hooks for building marketplace applications with Wagmi and TanStack Query integration.
 
-## What's New in v2.1.2
+## What's New in v2.2.1
 
-- **ERC1155 Support** - `listNFT` now supports `amount` parameter for multi-token listings
-- **Batch Operations** - `batchListNFT`, `batchCreateEnglishAuction`, `batchCancelAuction` hooks
-- **Allowlist Hooks** - `setupAllowlist`, `addToAllowlist`, `isInAllowlist` for collection access control
-- **WagmiProviderSync** - SSR-safe provider state synchronization
-- **Enhanced Error Handling** - Transaction retry with history tracking
+- **Current Release** - Docs aligned to SDK `2.2.1`
+- **Stable Hook Surface** - Existing exchange, collection, auction, and wallet hooks remain unchanged
+- **SSR-Safe Provider Flow** - `ZunoProvider` and `WagmiProviderSync` continue to be the recommended App Router setup
+- **Smaller Runtime Footprint** - SDK internals now use `fetch`, with no docs changes required in hook usage
 
 ## Installation
 
@@ -32,7 +31,7 @@ npm install zuno-marketplace-sdk @tanstack/react-query wagmi viem
 
 ## Provider Setup
 
-Wrap your app with `ZunoProvider` (v2.1.2 includes WagmiProviderSync):
+Wrap your app with `ZunoProvider` (v2.2.1 includes WagmiProviderSync):
 
 ```tsx
 import { ZunoProvider } from 'zuno-marketplace-sdk/react';
@@ -52,7 +51,7 @@ function App({ children }) {
 ```
 
 ::alert{type="info"}
-**SSR-Safe:** v2.1.2 includes WagmiProviderSync for automatic SSR-safe provider state synchronization in Next.js App Router.
+**SSR-Safe:** v2.2.1 includes WagmiProviderSync for automatic SSR-safe provider state synchronization in Next.js App Router.
 ::
 
 ## Available Hooks
@@ -69,11 +68,11 @@ import {
   useCancelListing,
   useUpdateListingPrice,
   useGetActiveListings,
-  useBatchListNFT,  // v2.1.2
+  useBatchListNFT,  // v2.2.1
 } from 'zuno-marketplace-sdk/react';
 ```
 
-**Example (v2.1.2):**
+**Example (v2.2.1):**
 
 ```tsx
 function ListingComponent() {
@@ -115,20 +114,20 @@ function ListingComponent() {
 
 ### Collection Hooks
 
-Hooks for creating and minting NFT collections with allowlist management (v2.1.2):
+Hooks for creating and minting NFT collections with allowlist management (v2.2.1):
 
 ```tsx
 import {
   useCollection,
   useCreateERC721Collection,
   useMintERC721,
-  useSetupAllowlist,       // v2.1.2
-  useAddToAllowlist,       // v2.1.2
-  useIsInAllowlist,        // v2.1.2
+  useSetupAllowlist,       // v2.2.1
+  useAddToAllowlist,       // v2.2.1
+  useIsInAllowlist,        // v2.2.1
 } from 'zuno-marketplace-sdk/react';
 ```
 
-**Example (v2.1.2):**
+**Example (v2.2.1):**
 
 ```tsx
 function CollectionComponent() {
@@ -174,7 +173,7 @@ function CollectionComponent() {
 
 ### Auction Hooks
 
-Hooks for auction functionality with batch operations (v2.1.2):
+Hooks for auction functionality with batch operations (v2.2.1):
 
 ```tsx
 import {
@@ -183,12 +182,12 @@ import {
   usePlaceBid,
   useCancelAuction,
   useGetActiveAuctions,
-  useBatchCreateEnglishAuction,  // v2.1.2
-  useBatchCancelAuction,         // v2.1.2
+  useBatchCreateEnglishAuction,  // v2.2.1
+  useBatchCancelAuction,         // v2.2.1
 } from 'zuno-marketplace-sdk/react';
 ```
 
-**Example (v2.1.2):**
+**Example (v2.2.1):**
 
 ```tsx
 function AuctionComponent() {
@@ -267,7 +266,7 @@ function WalletComponent() {
 import {
   useZunoSDK,        // Access SDK instance
   useZunoLogger,     // Logger instance
-  useProviderSync,   // v2.1.2 - WagmiProviderSync status
+  useProviderSync,   // v2.2.1 - WagmiProviderSync status
   useABIs,           // Contract ABIs
 } from 'zuno-marketplace-sdk/react';
 ```
@@ -282,7 +281,7 @@ All hooks include:
 - ✅ **Caching** - Automatic with TanStack Query
 - ✅ **Refetching** - Manual and automatic refetch
 - ✅ **Optimistic Updates** - UI updates before confirmation
-- ✅ **Retry Logic** - v2.1.2 enhanced transaction retry
+- ✅ **Retry Logic** - v2.2.1 enhanced transaction retry
 
 ## Common Patterns
 
@@ -340,7 +339,7 @@ function ListingsComponent() {
 }
 ```
 
-### Batch Operations (v2.1.2)
+### Batch Operations (v2.2.1)
 
 ```tsx
 function BatchAuctionsComponent() {
@@ -365,7 +364,7 @@ function BatchAuctionsComponent() {
 }
 ```
 
-### Allowlist Management (v2.1.2)
+### Allowlist Management (v2.2.1)
 
 ```tsx
 function AllowlistComponent() {
@@ -431,7 +430,7 @@ const { data } = useGetActiveListings({ page: 1, limit: 20 });
 ::
 
 ::alert{type="info"}
-**Use batch operations for efficiency (v2.1.2):**
+**Use batch operations for efficiency (v2.2.1):**
 
 ```tsx
 // Gas-efficient batch listing
@@ -445,7 +444,7 @@ const { listingIds } = await batchListNFT.mutateAsync({
 ```
 ::
 
-## Complete Example (v2.1.2)
+## Complete Example (v2.2.1)
 
 ```tsx
 import {

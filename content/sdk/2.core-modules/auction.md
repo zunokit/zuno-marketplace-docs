@@ -17,9 +17,9 @@ The Auction module implements English auction functionality for NFT sales with c
 The Auction module provides:
 
 - **Create English auctions** - Time-bound auctions with starting bids
-- **Batch create auctions** - Create up to 20 auctions in one transaction (v2.1.2)
+- **Batch create auctions** - Create up to 20 auctions in one transaction (v2.2.1)
 - **Place bids** - Submit competitive bids on active auctions
-- **Batch cancel auctions** - Cancel multiple auctions at once (v2.1.2)
+- **Batch cancel auctions** - Cancel multiple auctions at once (v2.2.1)
 - **Query auctions** - Get active auctions and auction history
 - **Settle auctions** - Finalize auction and transfer NFT to winner
 
@@ -56,7 +56,7 @@ const { auctionId, tx } = await sdk.auction.createEnglishAuction({
 }
 ```
 
-### Batch Create English Auctions (v2.1.2)
+### Batch Create English Auctions (v2.2.1)
 
 Create multiple auctions in a single transaction (max 20 auctions).
 
@@ -114,7 +114,7 @@ const { tx } = await sdk.auction.placeBid({
 - Must exceed starting bid if first bid
 - Typically requires 5-10% minimum increment
 
-### Batch Cancel Auctions (v2.1.2)
+### Batch Cancel Auctions (v2.2.1)
 
 Cancel multiple auctions at once.
 

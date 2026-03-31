@@ -1,8 +1,8 @@
 ---
 title: "Zuno SDK"
 package: "sdk"
-version: "2.1.2"
-lastUpdated: "2026-01-27"
+version: "2.2.1"
+lastUpdated: "2026-03-31"
 changeFrequency: "monthly"
 scope: "guide"
 context: "standalone"
@@ -19,7 +19,7 @@ relatedTopics:
 <div class="flex gap-2 mb-6 flex-wrap">
   <UBadge color="blue" variant="subtle">TypeScript 5.6</UBadge>
   <UBadge color="green" variant="subtle">React 19</UBadge>
-  <UBadge color="purple" variant="subtle">v2.1.2</UBadge>
+  <UBadge color="purple" variant="subtle">v2.2.1</UBadge>
   <UBadge color="gray" variant="subtle">MIT License</UBadge>
   <UBadge color="orange" variant="subtle">ERC721 + ERC1155</UBadge>
 </div>
@@ -42,29 +42,18 @@ A comprehensive, type-safe SDK for building NFT marketplace applications on Ethe
 - ⚡ **Batch Operations** - Create up to 20 auctions per transaction
 - 🛠️ **DevTools** - In-app debugging panel
 
-## 🆕 What's New in v2.1.2
+## 🆕 What's New in v2.2.1
 
-### ERC1155 Support
-- **Multi-Token Listings** - `listNFT()` now supports `amount` parameter for ERC1155
-- **Auto Token Detection** - Automatically detects ERC721 vs ERC1155 standard
-- **Amount Validation** - Comprehensive validation for amount parameters
+### Release Highlights
+- **Raw Fetch Transport** - The SDK now uses a lightweight internal `fetch` wrapper instead of `axios`
+- **Smaller Runtime Surface** - Removed the `axios` dependency from the published package
+- **Same SDK Behavior** - Preserves timeout handling, query params, credentials, and normalized `ZunoSDKError` responses
 
-### Batch Operations
-- **Batch Auction Creation** - Create up to 20 English auctions in one transaction
-- **Batch Listing** - List multiple ERC1155 tokens efficiently
-- **Batch Cancellation** - Cancel multiple auctions at once
-
-### Allowlist Management
-- **Allowlist Setup** - Configure allowlist for minting restrictions
-- **Add to Allowlist** - Add addresses to minting allowlist
-- **Set Allowlist Only** - Enable permanent allowlist mode
-- **Check Allowlist Status** - Query if address is allowlisted
-
-### SSR & Performance
-- **WagmiProviderSync** - SSR-safe provider state synchronization
-- **Transaction Retry Logic** - Enhanced retry mechanism with history tracking
-- **Approval Caching** - Reduced RPC calls with approval status caching
-- **Batch Progress Events** - Real-time progress updates for batch operations
+### Available in the Current SDK
+- **ERC1155 Support** - Multi-token listings with `amount` handling and token-standard awareness
+- **Batch Operations** - Batch listing and batch auction flows for efficient transactions
+- **Allowlist Management** - Collection allowlist setup and address management helpers
+- **SSR Support** - `WagmiProviderSync` and `ZunoProvider` patterns for App Router setups
 
 ## 📦 Installation
 

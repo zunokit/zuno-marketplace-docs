@@ -21,7 +21,7 @@ Comprehensive tutorial for integrating Zuno SDK into a Next.js project, based on
 
     ## What is Zuno Mini?
 
-    **Zuno Mini** - Production NFT marketplace with Next.js 15 and Zuno SDK v2.1.2 demonstrating:
+    **Zuno Mini** - Production NFT marketplace with Next.js 15 and Zuno SDK v2.2.1 demonstrating:
     - Clean architecture with separated concerns
     - Robust wallet management with auto-reconnect
     - Centralized error handling
@@ -49,7 +49,7 @@ Comprehensive tutorial for integrating Zuno SDK into a Next.js project, based on
     | Technology | Version | Purpose |
     |------------|---------|---------|
     | **Next.js** | 15+ | React framework |
-    | **Zuno SDK** | 2.1.2 | NFT marketplace SDK |
+    | **Zuno SDK** | 2.2.1 | NFT marketplace SDK |
     | **TypeScript** | 5+ | Type safety |
     | **ethers.js** | 6+ | Web3 library |
     | **@tanstack/react-query** | 5+ | Data fetching |
@@ -130,7 +130,8 @@ Comprehensive tutorial for integrating Zuno SDK into a Next.js project, based on
 
     ```bash
     NEXT_PUBLIC_ZUNO_API_KEY=your_api_key_here
-    NEXT_PUBLIC_ZUNO_API_URL=https://zuno-marketplace-abis.vercel.app/api
+    # Optional: override the SDK default registry API
+    NEXT_PUBLIC_ZUNO_API_URL=https://abis.qdang46.xyz/api
     NEXT_PUBLIC_DEFAULT_CHAIN_ID=31337
     NEXT_PUBLIC_RPC_URL=http://127.0.0.1:8545
     ```
@@ -143,7 +144,7 @@ Comprehensive tutorial for integrating Zuno SDK into a Next.js project, based on
 
     ```bash
     NEXT_PUBLIC_ZUNO_API_KEY=
-    NEXT_PUBLIC_ZUNO_API_URL=https://zuno-marketplace-abis.vercel.app/api
+    NEXT_PUBLIC_ZUNO_API_URL=https://abis.qdang46.xyz/api
     NEXT_PUBLIC_DEFAULT_CHAIN_ID=31337
     NEXT_PUBLIC_RPC_URL=http://127.0.0.1:8545
     ```
@@ -187,7 +188,9 @@ Comprehensive tutorial for integrating Zuno SDK into a Next.js project, based on
       network: (process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID
         ? parseInt(process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID)
         : 31337) as number | "mainnet" | "sepolia" | "polygon" | "arbitrum",
-      apiUrl: process.env.NEXT_PUBLIC_ZUNO_API_URL,
+      ...(process.env.NEXT_PUBLIC_ZUNO_API_URL
+        ? { apiUrl: process.env.NEXT_PUBLIC_ZUNO_API_URL }
+        : {}),
       rpcUrl: process.env.NEXT_PUBLIC_RPC_URL || "http://127.0.0.1:8545",
 
       cache: {
@@ -228,10 +231,6 @@ Comprehensive tutorial for integrating Zuno SDK into a Next.js project, based on
 
       if (!process.env.NEXT_PUBLIC_ZUNO_API_KEY) {
         errors.push("NEXT_PUBLIC_ZUNO_API_KEY is not set");
-      }
-
-      if (!process.env.NEXT_PUBLIC_ZUNO_API_URL) {
-        errors.push("NEXT_PUBLIC_ZUNO_API_URL is not set");
       }
 
       return {
@@ -939,7 +938,9 @@ Comprehensive tutorial for integrating Zuno SDK into a Next.js project, based on
       network: (process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID
         ? parseInt(process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID)
         : 31337) as number | "mainnet" | "sepolia" | "polygon" | "arbitrum",
-      apiUrl: process.env.NEXT_PUBLIC_ZUNO_API_URL,
+      ...(process.env.NEXT_PUBLIC_ZUNO_API_URL
+        ? { apiUrl: process.env.NEXT_PUBLIC_ZUNO_API_URL }
+        : {}),
       rpcUrl: process.env.NEXT_PUBLIC_RPC_URL || "http://127.0.0.1:8545",
       cache: {
         ttl: 300000,      // 5 minutes cache for contract instances
@@ -962,10 +963,6 @@ Comprehensive tutorial for integrating Zuno SDK into a Next.js project, based on
 
       if (!process.env.NEXT_PUBLIC_ZUNO_API_KEY) {
         errors.push("NEXT_PUBLIC_ZUNO_API_KEY is not set");
-      }
-
-      if (!process.env.NEXT_PUBLIC_ZUNO_API_URL) {
-        errors.push("NEXT_PUBLIC_ZUNO_API_URL is not set");
       }
 
       if (process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID) {

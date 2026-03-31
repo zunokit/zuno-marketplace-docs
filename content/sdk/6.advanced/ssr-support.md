@@ -6,7 +6,7 @@ complexity: "advanced"
 category: "advanced"
 ---
 
-Server-Side Rendering support for Next.js App Router with WagmiProviderSync (v2.1.2).
+Server-Side Rendering support for Next.js App Router with WagmiProviderSync (v2.2.1).
 
 ## SSR Challenges
 
@@ -15,7 +15,7 @@ Web3 libraries typically assume browser environment:
 - Wallet connection requires browser
 - State hydration mismatches
 
-## WagmiProviderSync (v2.1.2)
+## WagmiProviderSync (v2.2.1)
 
 Zuno SDK includes automatic SSR-safe provider synchronization.
 

@@ -99,7 +99,7 @@ Contract ABIs.
 function useABIs(): Record<string, any[]>
 ```
 
-### useProviderSync (v2.1.2)
+### useProviderSync (v2.2.1)
 
 WagmiProviderSync status.
 
