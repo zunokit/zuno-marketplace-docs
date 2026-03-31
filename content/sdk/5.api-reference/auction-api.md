@@ -52,7 +52,7 @@ const { auctionId, tx } = await sdk.auction.createEnglishAuction({
 });
 ```
 
-### batchCreateEnglishAuction (v2.1.2)
+### batchCreateEnglishAuction (v2.2.1)
 
 Create multiple auctions (max 20).
 
@@ -86,7 +86,7 @@ function placeBid(params: {
 }): Promise<{ tx: TransactionResponse }>
 ```
 
-### batchCancelAuction (v2.1.2)
+### batchCancelAuction (v2.2.1)
 
 Cancel multiple auctions.
 

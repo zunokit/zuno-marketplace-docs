@@ -1,7 +1,7 @@
 ---
 title: "Quick Start"
 package: "sdk"
-lastUpdated: "2026-01-27"
+lastUpdated: "2026-03-31"
 scope: "guide"
 complexity: "beginner"
 category: "getting-started"
@@ -11,13 +11,13 @@ relatedTopics:
   - "wallet-connection"
 ---
 
-Get your NFT marketplace up and running in minutes with the Zuno SDK v2.1.2.
+Get your NFT marketplace up and running in minutes with the Zuno SDK v2.2.1.
 
 ## React with Next.js Setup
 
 ### 1. Wrap Your App with ZunoProvider
 
-The SDK v2.1.2 requires the `ZunoProvider` wrapper with automatic WagmiProviderSync for SSR:
+The SDK v2.2.1 requires the `ZunoProvider` wrapper with automatic WagmiProviderSync for SSR:
 
 ```tsx
 // app/layout.tsx
@@ -64,7 +64,7 @@ export default function HomePage() {
     console.log('Listed with ID:', listingId, 'TX:', tx.hash);
   };
 
-  // List ERC1155 NFTs with amount (v2.1.2)
+  // List ERC1155 NFTs with amount (v2.2.1)
   const handleListERC1155 = async () => {
     const { listingId, tx } = await listNFT.mutateAsync({
       collectionAddress: '0x...',
@@ -76,7 +76,7 @@ export default function HomePage() {
     console.log('Listed 10 tokens with ID:', listingId);
   };
 
-  // Batch list multiple NFTs (v2.1.2)
+  // Batch list multiple NFTs (v2.2.1)
   const handleBatchList = async () => {
     const { listingIds, tx } = await batchListNFT.mutateAsync({
       collectionAddress: '0x...',
@@ -152,7 +152,7 @@ const { listingId, tx } = await listNFT.mutateAsync({
 });
 ```
 
-### List ERC1155 NFTs with Amount (v2.1.2)
+### List ERC1155 NFTs with Amount (v2.2.1)
 
 ```tsx
 const { listNFT } = useExchange();
@@ -166,7 +166,7 @@ const { listingId, tx } = await listNFT.mutateAsync({
 });
 ```
 
-### Batch List Multiple NFTs (v2.1.2)
+### Batch List Multiple NFTs (v2.2.1)
 
 ```tsx
 const { batchListNFT } = useExchange();
@@ -212,7 +212,7 @@ const { auctionId, tx } = await createEnglishAuction.mutateAsync({
 });
 ```
 
-### Batch Create Auctions (v2.1.2)
+### Batch Create Auctions (v2.2.1)
 
 ```tsx
 const { batchCreateEnglishAuction } = useAuction();
@@ -225,7 +225,7 @@ const { auctionIds, tx } = await batchCreateEnglishAuction.mutateAsync({
 });
 ```
 
-### Setup Allowlist (v2.1.2)
+### Setup Allowlist (v2.2.1)
 
 ```tsx
 const { setupAllowlist, addToAllowlist } = useCollection();
@@ -246,7 +246,7 @@ await addToAllowlist.mutateAsync({
 
 ## Available Hooks
 
-The SDK v2.1.2 provides 21+ React hooks organized by module:
+The SDK v2.2.1 provides 21+ React hooks organized by module:
 
 ::code-group
 
@@ -257,7 +257,7 @@ import {
   useBuyNFT,
   useCancelListing,
   useUpdateListingPrice,
-  useBatchListNFT,  // v2.1.2
+  useBatchListNFT,  // v2.2.1
 } from 'zuno-marketplace-sdk/react';
 ```
 
@@ -266,9 +266,9 @@ import {
   useCollection,
   useCreateERC721,
   useMintERC721,
-  useSetupAllowlist,    // v2.1.2
-  useAddToAllowlist,    // v2.1.2
-  useIsInAllowlist,     // v2.1.2
+  useSetupAllowlist,    // v2.2.1
+  useAddToAllowlist,    // v2.2.1
+  useIsInAllowlist,     // v2.2.1
 } from 'zuno-marketplace-sdk/react';
 ```
 
@@ -278,8 +278,8 @@ import {
   useCreateEnglishAuction,
   usePlaceBid,
   useCancelAuction,
-  useBatchCreateEnglishAuction,  // v2.1.2
-  useBatchCancelAuction,         // v2.1.2
+  useBatchCreateEnglishAuction,  // v2.2.1
+  useBatchCancelAuction,         // v2.2.1
 } from 'zuno-marketplace-sdk/react';
 ```
 
@@ -294,31 +294,21 @@ import {
 
 ::
 
-## What's New in v2.1.2
+## What's New in v2.2.1
 
-### ERC1155 Support
-- `listNFT()` now supports `amount` parameter for ERC1155 multi-token listings
-- Auto token detection (ERC721 vs ERC1155)
+### Transport & Packaging
+- The internal registry client now uses raw `fetch` instead of `axios`
+- The published SDK has a smaller runtime dependency surface
+- Existing SDK APIs and error handling behavior stay the same
 
-### Batch Operations
-- `batchListNFT()` - List multiple ERC1155 tokens efficiently
-- `batchCreateEnglishAuction()` - Create up to 20 auctions per transaction
-- `batchCancelAuction()` - Cancel multiple auctions at once
-
-### Allowlist Management
-- `setupAllowlist()` - Configure collection minting restrictions
-- `addToAllowlist()` - Add addresses to allowlist
-- `setAllowlistOnly()` - Enable permanent allowlist-only mode
-- `isInAllowlist()` - Query allowlist status
-
-### SSR & Performance
-- **WagmiProviderSync** - Automatic SSR-safe provider synchronization
-- **Transaction Retry** - Enhanced retry mechanism with history tracking
-- **Approval Caching** - Reduced RPC calls with approval status caching
-- **DevTools** - In-app debugging panel for development
+### Key Features Available Now
+- ERC1155 listing and batch listing flows
+- Batch auction creation and cancellation
+- Allowlist setup and management helpers
+- SSR-safe provider synchronization with `WagmiProviderSync`
 
 ::alert{type="info"}
-**SSR Support:** v2.1.2 includes WagmiProviderSync for automatic SSR compatibility in Next.js App Router. No additional setup required.
+**SSR Support:** v2.2.1 includes WagmiProviderSync for automatic SSR compatibility in Next.js App Router. No additional setup required.
 ::
 
 ## Next Steps

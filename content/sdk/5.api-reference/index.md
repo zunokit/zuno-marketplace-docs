@@ -6,7 +6,7 @@ complexity: "intermediate"
 category: "api"
 ---
 
-Complete API reference for Zuno SDK v2.1.2. All methods, hooks, and types with signatures, parameters, return values, and examples.
+Complete API reference for Zuno SDK v2.2.1. All methods, hooks, and types with signatures, parameters, return values, and examples.
 
 ## APIs
 
@@ -48,19 +48,19 @@ Complete API reference for Zuno SDK v2.1.2. All methods, hooks, and types with s
 | Method | Module | Description |
 |--------|--------|-------------|
 | `listNFT()` | Exchange | List ERC721/ERC1155 |
-| `batchListNFT()` | Exchange | Batch list (v2.1.2) |
+| `batchListNFT()` | Exchange | Batch list (v2.2.1) |
 | `buyNFT()` | Exchange | Purchase NFT |
 | `cancelListing()` | Exchange | Remove listing |
 | `updateListingPrice()` | Exchange | Update price |
 | `createEnglishAuction()` | Auction | Create auction |
-| `batchCreateEnglishAuction()` | Auction | Batch create (v2.1.2) |
+| `batchCreateEnglishAuction()` | Auction | Batch create (v2.2.1) |
 | `placeBid()` | Auction | Submit bid |
-| `batchCancelAuction()` | Auction | Batch cancel (v2.1.2) |
+| `batchCancelAuction()` | Auction | Batch cancel (v2.2.1) |
 | `createERC721Collection()` | Collection | Deploy collection |
 | `mintERC721()` | Collection | Mint NFT |
-| `setupAllowlist()` | Collection | Config allowlist (v2.1.2) |
-| `addToAllowlist()` | Collection | Add addresses (v2.1.2) |
-| `setAllowlistOnly()` | Collection | Enable mode (v2.1.2) |
+| `setupAllowlist()` | Collection | Config allowlist (v2.2.1) |
+| `addToAllowlist()` | Collection | Add addresses (v2.2.1) |
+| `setAllowlistOnly()` | Collection | Enable mode (v2.2.1) |
 
 ## See Also
 

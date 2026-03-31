@@ -6,7 +6,7 @@ complexity: "beginner"
 category: "integration"
 ---
 
-Complete guide for setting up a new Next.js 15 project with Zuno SDK v2.1.2, featuring App Router, SSR support, and proper provider configuration.
+Complete guide for setting up a new Next.js 15 project with Zuno SDK v2.2.1, featuring App Router, SSR support, and proper provider configuration.
 
 ## Prerequisites
 
@@ -34,7 +34,9 @@ Create `.env.local`:
 ```bash
 # Required: Zuno API configuration
 NEXT_PUBLIC_ZUNO_API_KEY=your_api_key_here
-NEXT_PUBLIC_ZUNO_API_URL=https://zuno-marketplace-abis.vercel.app/api
+
+# Optional: override the SDK default registry API
+NEXT_PUBLIC_ZUNO_API_URL=https://abis.qdang46.xyz/api
 
 # Network configuration
 NEXT_PUBLIC_DEFAULT_CHAIN_ID=31337
@@ -46,7 +48,7 @@ NEXT_PUBLIC_RPC_URL=http://127.0.0.1:8545
 | Variable | Required | Description |
 |----------|----------|-------------|
 | `NEXT_PUBLIC_ZUNO_API_KEY` | Yes | Your Zuno API key |
-| `NEXT_PUBLIC_ZUNO_API_URL` | Yes | Zuno API endpoint |
+| `NEXT_PUBLIC_ZUNO_API_URL` | No | Override the SDK default registry API endpoint |
 | `NEXT_PUBLIC_DEFAULT_CHAIN_ID` | No | Default network (31337 = local) |
 | `NEXT_PUBLIC_RPC_URL` | No | Custom RPC URL |
 
@@ -66,7 +68,9 @@ export const defaultConfig: ZunoSDKConfig = {
   network: (process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID
     ? parseInt(process.env.NEXT_PUBLIC_DEFAULT_CHAIN_ID)
     : 31337) as number | "mainnet" | "sepolia" | "polygon" | "arbitrum",
-  apiUrl: process.env.NEXT_PUBLIC_ZUNO_API_URL,
+  ...(process.env.NEXT_PUBLIC_ZUNO_API_URL
+    ? { apiUrl: process.env.NEXT_PUBLIC_ZUNO_API_URL }
+    : {}),
   rpcUrl: process.env.NEXT_PUBLIC_RPC_URL || "http://127.0.0.1:8545",
   cache: {
     ttl: 300000, // 5 minutes cache for contract instances
@@ -89,10 +93,6 @@ export function validateSDKConfig(): { isValid: boolean; errors: string[] } {
 
   if (!process.env.NEXT_PUBLIC_ZUNO_API_KEY) {
     errors.push("NEXT_PUBLIC_ZUNO_API_KEY is not set");
-  }
-
-  if (!process.env.NEXT_PUBLIC_ZUNO_API_URL) {
-    errors.push("NEXT_PUBLIC_ZUNO_API_URL is not set");
   }
 
   return {
@@ -167,7 +167,7 @@ export default function AppProvider({
 ```
 
 ::alert{type="info"}
-**WagmiProviderSync:** v2.1.2 includes WagmiProviderSync for automatic SSR-safe provider state synchronization. The `reconnectDelay` parameter controls how quickly to attempt reconnection after wallet state changes.
+**WagmiProviderSync:** v2.2.1 includes WagmiProviderSync for automatic SSR-safe provider state synchronization. The `reconnectDelay` parameter controls how quickly to attempt reconnection after wallet state changes.
 ::
 
 ## 5. Update Root Layout
@@ -275,7 +275,7 @@ Visit `http://localhost:3000` to see your marketplace in action.
 ::collapse{title="Missing environment variables"}
 **Problem:** App shows configuration error on load.
 
-**Solution:** Ensure `.env.local` is created with `NEXT_PUBLIC_ZUNO_API_KEY` and `NEXT_PUBLIC_ZUNO_API_URL`.
+**Solution:** Ensure `.env.local` is created with `NEXT_PUBLIC_ZUNO_API_KEY`. Only set `NEXT_PUBLIC_ZUNO_API_URL` if you need to override the SDK default API endpoint.
 
 **Note:** Variables must start with `NEXT_PUBLIC_` to be exposed to the browser.
 ::
@@ -283,7 +283,7 @@ Visit `http://localhost:3000` to see your marketplace in action.
 ::collapse{title="Hydration mismatch errors"}
 **Problem:** React hydration warnings about wallet state.
 
-**Solution:** WagmiProviderSync in v2.1.2 handles this automatically. Ensure you're using `ZunoProvider` wrapper correctly.
+**Solution:** WagmiProviderSync in v2.2.1 handles this automatically. Ensure you're using `ZunoProvider` wrapper correctly.
 ::
 
 ::collapse{title="Wallet not connecting"}

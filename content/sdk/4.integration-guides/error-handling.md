@@ -6,7 +6,7 @@ complexity: "intermediate"
 category: "integration"
 ---
 
-Comprehensive error handling patterns for Zuno SDK v2.1.2, covering transaction errors, network issues, and user-friendly messaging.
+Comprehensive error handling patterns for Zuno SDK v2.2.1, covering transaction errors, network issues, and user-friendly messaging.
 
 ## Error Types
 

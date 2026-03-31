@@ -10,7 +10,7 @@ relatedTopics:
   - "auction"
 ---
 
-The Collection module enables creation and minting of ERC721 NFT collections with allowlist management (v2.1.2).
+The Collection module enables creation and minting of ERC721 NFT collections with allowlist management (v2.2.1).
 
 ## Overview
 
@@ -19,13 +19,13 @@ Use the Collection module to:
 - **Create ERC721 collections** - Standard NFT collections
 - **Mint NFTs** - Create individual tokens in collections
 - **Batch mint** - Efficiently mint multiple NFTs at once
-- **Allowlist management** - Configure minting restrictions (v2.1.2)
+- **Allowlist management** - Configure minting restrictions (v2.2.1)
 - **Owner minting** - Mint directly by collection owner
 
-## Allowlist Management (v2.1.2)
+## Allowlist Management (v2.2.1)
 
 ::alert{type="info"}
-**New Feature:** v2.1.2 introduces comprehensive allowlist management for restricting minting to specific addresses.
+**New Feature:** v2.2.1 introduces comprehensive allowlist management for restricting minting to specific addresses.
 ::
 
 ### Allowlist Features
@@ -98,7 +98,7 @@ const { tokenId, tx } = await sdk.collection.mintERC721({
 }
 ```
 
-### Setup Allowlist (v2.1.2)
+### Setup Allowlist (v2.2.1)
 
 Configure allowlist settings for the collection.
 
@@ -118,7 +118,7 @@ const { tx } = await sdk.collection.setupAllowlist({
 | `ownerMintLimit` | `number` | Yes | Maximum tokens owner can mint |
 | `allowlistOnly` | `boolean` | Yes | Enable permanent allowlist-only mode |
 
-### Add to Allowlist (v2.1.2)
+### Add to Allowlist (v2.2.1)
 
 Add addresses to the minting allowlist.
 
@@ -136,7 +136,7 @@ const { tx } = await sdk.collection.addToAllowlist({
 | `collectionAddress` | `string` | Yes | Collection contract address |
 | `addresses` | `string[]` | Yes | Addresses to add to allowlist |
 
-### Remove from Allowlist (v2.1.2)
+### Remove from Allowlist (v2.2.1)
 
 Remove addresses from the minting allowlist.
 
@@ -147,7 +147,7 @@ const { tx } = await sdk.collection.removeFromAllowlist({
 });
 ```
 
-### Set Allowlist Only (v2.1.2)
+### Set Allowlist Only (v2.2.1)
 
 Enable or disable permanent allowlist-only mode.
 
@@ -165,7 +165,7 @@ const { tx } = await sdk.collection.setAllowlistOnly({
 | `collectionAddress` | `string` | Yes | Collection contract address |
 | `enabled` | `boolean` | Yes | Enable allowlist-only mode |
 
-### Check Allowlist Status (v2.1.2)
+### Check Allowlist Status (v2.2.1)
 
 Check if an address is allowlisted for minting.
 
@@ -177,7 +177,7 @@ const isAllowlisted = await sdk.collection.isInAllowlist({
 // Returns: boolean
 ```
 
-### Get Allowlist (v2.1.2)
+### Get Allowlist (v2.2.1)
 
 Get all addresses on the allowlist.
 
@@ -269,7 +269,7 @@ async function createCollectionWithAllowlist() {
   console.log('Collection created:', collectionAddress);
   await createTx.wait();
 
-  // Step 2: Setup allowlist (v2.1.2)
+  // Step 2: Setup allowlist (v2.2.1)
   const { tx: setupTx } = await sdk.collection.setupAllowlist({
     collectionAddress,
     ownerMintLimit: 100,
